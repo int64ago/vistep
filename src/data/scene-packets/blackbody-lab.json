@@ -2,9 +2,9 @@
   "topic": {
     "slug": "blackbody-lab",
     "name": "黑体辐射测量",
-    "title": "升温时，辐射曲线的峰值为什么向短波移动？",
-    "question": "升温时，辐射曲线的峰值为什么向短波移动？",
-    "description": "从热腔小孔到分光测量，在同一强度刻度下比较不同温度的辐射光谱。",
+    "title": "短波辐射为什么没有无限增强？",
+    "question": "短波辐射为什么没有无限增强？",
+    "description": "从教材实验图的短波下降出发，在共同刻度上比较古典与量子预测，再用能级间隔解释差异。",
     "color": "#aebfa8",
     "tag": "近代物理",
     "related": ["photoelectric-lab", "thermal-process-lab"],
@@ -16,6 +16,10 @@
       {
         "title": "NIST — SI constants",
         "url": "https://www.nist.gov/si-redefinition/meet-constants"
+      },
+      {
+        "title": "Max Planck (1900) — On the Theory of the Energy Distribution Law",
+        "url": "https://commons.princeton.edu/josephhenry/wp-content/uploads/sites/71/2021/01/Planck-1900-Distribution-Law.pdf"
       }
     ]
   },
@@ -37,58 +41,68 @@
     "黑体辐射测量": "Measuring blackbody radiation",
     "升温时，辐射曲线的峰值为什么向短波移动？": "Why does a hotter radiator peak at a shorter wavelength?",
     "从热腔小孔到分光测量，在同一强度刻度下比较不同温度的辐射光谱。": "Follow cavity radiation through a spectrometer and compare temperatures on one intensity scale.",
-    "近代物理": "Modern physics"
+    "近代物理": "Modern physics",
+    "从小孔观察热腔": "Observe a heated cavity",
+    "空心点记录趋势；计算曲线属于理论。": "Open circles show the trend; curves are predictions.",
+    "升高炉温": "Raise the temperature",
+    "升温：辐射增强，峰值向短波移动。": "Heating raises the curve and shifts its peak.",
+    "追踪同一条曲线的峰值": "Track the spectral peak",
+    "温度加倍，峰值波长减半。": "Double the temperature; halve the peak wavelength.",
+    "短波矛盾与能量阶梯": "Short waves and energy steps",
+    "能量阶梯越大，短波激发越困难。": "Larger energy steps suppress short-wave excitation.",
+    "短波辐射为什么没有无限增强？": "Why does short-wave radiation not grow without limit?",
+    "从教材实验图的短波下降出发，在共同刻度上比较古典与量子预测，再用能级间隔解释差异。": "Start with the short-wave decline in a textbook experimental graph, compare classical and quantum predictions on one scale, then explain the difference through energy steps."
   },
   "narration": {
-    "duration": 112,
+    "duration": 148.0,
     "cues": [
       {
         "id": "cavity",
         "title": "从小孔观察热腔",
         "titleEn": "Observe a heated cavity",
-        "caption": "小孔近似黑体；分光后可比较不同波长的辐射。",
-        "captionEn": "A small cavity aperture approximates a blackbody; dispersion separates wavelengths.",
-        "zh": "想比较热辐射，先找一个接近理想黑体的光源。一个加热的空腔开一个小孔，从孔中射出的辐射近似黑体辐射。分光装置把不同波长分开，探测器逐段测量。图中的曲线按波长表示，不是肉眼看见的颜色亮度。",
-        "en": "Begin with an approximately ideal source: a small hole in a heated cavity. Radiation leaving the hole approximates blackbody radiation. A spectrometer separates wavelengths and a detector samples the spectrum. The graph shows spectral radiance per wavelength, not perceived color brightness.",
-        "seconds": 28,
+        "caption": "空心点记录趋势；计算曲线属于理论。",
+        "captionEn": "Open circles show the trend; curves are predictions.",
+        "zh": "为什么把炉子烧热，不会让越短的波长永远越强？先看证据。小孔热腔近似黑体，分光后可以逐段测量辐射。这里的空心点来自教材一千六百开尔文实验示意图的相对位置，是图示读数，不是原始测量表。沿着点向短波端走，辐射先到达峰值，再下降。这个转折，是理论必须解释的现象。",
+        "en": "Why does heating a source not make ever shorter wavelengths endlessly stronger? Start with the evidence. A small cavity aperture approximates a blackbody, and a spectrometer separates the emitted wavelengths. These open circles are approximate readings from the textbook illustration at sixteen hundred kelvin, not raw laboratory records. Follow them toward shorter wavelengths: intensity reaches a peak, then falls. A theory has to explain that turn.",
+        "seconds": 34,
         "chapterAt": 0,
-        "at": 0.3
+        "at": 0.45
       },
       {
         "id": "heat",
         "title": "升高炉温",
         "titleEn": "Raise the temperature",
-        "caption": "温度提高，曲线整体升高，峰值向更短波长移动。",
-        "captionEn": "Heating raises the spectrum and shifts its peak toward shorter wavelengths.",
+        "caption": "升温：辐射增强，峰值向短波移动。",
+        "captionEn": "Heating raises the curve and shifts its peak.",
         "zh": "现在提高炉温。注意曲线发生两种变化：辐射增强，峰值也向较短的波长移动。两条浅色曲线保留三千开尔文和五千开尔文的参照，所有曲线使用同一个纵轴刻度，因此曲线高度可以直接比较。",
         "en": "Raise the furnace temperature. Two changes occur: radiation strengthens and the peak moves toward shorter wavelengths. Pale curves retain the reference spectra at three thousand and five thousand kelvin. All curves share one vertical scale, so their heights can be compared directly.",
         "seconds": 28,
-        "chapterAt": 28,
-        "at": 28.3
+        "chapterAt": 34.0,
+        "at": 34.45
       },
       {
         "id": "peak",
         "title": "追踪同一条曲线的峰值",
         "titleEn": "Track the spectral peak",
-        "caption": "峰值波长与温度的乘积近似为常量。",
-        "captionEn": "Peak wavelength times temperature is approximately constant.",
+        "caption": "温度加倍，峰值波长减半。",
+        "captionEn": "Double the temperature; halve the peak wavelength.",
         "zh": "暂停在这个温度，沿着峰值标记读出对应的波长。再与低温参照比较，就会发现温度越高，峰值波长越短。这里显示的是以波长为横轴的谱；如果改用频率为横轴，不能直接把峰值位置简单取倒数。",
         "en": "Hold the temperature and read the wavelength at the peak marker. Compare it with the cooler references: higher temperature gives a shorter peak wavelength. This is a wavelength spectrum. A frequency spectrum has a different density, so its peak is not obtained by simply taking the reciprocal.",
         "seconds": 28,
-        "chapterAt": 56,
-        "at": 56.3
+        "chapterAt": 62.0,
+        "at": 62.45
       },
       {
         "id": "quantum",
-        "title": "用同一条定律描述各温度",
-        "titleEn": "One law for different temperatures",
-        "caption": "普朗克分布在短波端下降，避免经典预测的发散。",
-        "captionEn": "Planck’s distribution falls at short wavelengths instead of diverging.",
-        "zh": "继续加热，峰值移动，但短波一侧始终下降。普朗克辐射定律能够同时描述这些温度下的光谱，这是能量量子化的重要历史线索。当前曲线由该定律计算；真实实验还需要校准探测器对不同波长的响应，才能与理论作定量比较。",
-        "en": "Continue heating. The peak moves, but the short-wavelength side still falls. Planck’s radiation law describes these spectra across temperatures, a key historical clue to energy quantization. These curves are calculated. A real experiment must calibrate detector response before comparing measured intensities with theory.",
-        "seconds": 28,
-        "chapterAt": 84,
-        "at": 84.3
+        "title": "短波矛盾与能量阶梯",
+        "titleEn": "Short waves and energy steps",
+        "caption": "能量阶梯越大，短波激发越困难。",
+        "captionEn": "Larger energy steps suppress short-wave excitation.",
+        "zh": "回到一千六百开尔文的历史对照。虚线是瑞利—金斯古典预测。两条理论使用同一相对刻度，没有各自缩放。越往短波，古典预测越高，已经冲出了图框；教材的实验点却向下。这不是靠调亮度就能消除的形状矛盾。普朗克提出，振子的能量不能任意连续变化，而只能取一份、两份这样的分立值，每份能量等于频率乘普朗克常量。看能量阶梯：波长缩短，频率提高，台阶变大。同样的温度下，这些较大的激发更难发生，平均能量不再都等于热尺度。由这个假设计算的实线在短波端下降。它符合图示趋势，但这张图不能替代原始实验和误差检验。",
+        "en": "Return to the historical comparison at sixteen hundred kelvin. The dashed Rayleigh–Jeans prediction uses the same relative scale as the quantum prediction. Toward short wavelengths it climbs beyond the frame, while the textbook points fall. Changing brightness cannot repair this shape disagreement. Planck proposed discrete oscillator energies: one unit, two units, and so on, with each unit equal to frequency times Planck’s constant. Follow the energy steps. Shorter wavelengths mean higher frequencies and larger steps. At the same temperature, those larger excitations become less likely. Their mean energy no longer stays at the classical thermal scale. The solid curve calculated from this assumption falls at the short-wave end. It follows the illustrated trend, but this graph cannot replace original measurements and their uncertainties.",
+        "seconds": 58,
+        "chapterAt": 90.0,
+        "at": 90.45
       }
     ]
   },
@@ -98,6 +112,33 @@
       "label": {
         "zh": "黑体辐射",
         "en": "Blackbody radiation"
+      }
+    }
+  },
+  "teachingProfiles": {
+    "e3-blackbody-spectrum-measurement": {
+      "sceneSlug": "blackbody-lab",
+      "question": {
+        "zh": "短波辐射为什么没有无限增强？",
+        "en": "Why does short-wave radiation not grow without limit?"
+      },
+      "lead": {
+        "zh": "从热腔分光与教材实验图出发，追踪升温时的峰值；再固定温度，让古典预测与短波下降直接对照。",
+        "en": "Start with cavity spectroscopy and the textbook graph, follow the peak during heating, then hold temperature fixed to confront the classical short-wave prediction."
+      },
+      "principle": {
+        "zh": "古典均分给每个振动模式平均能量kT，得到短波发散的瑞利–金斯谱。离散能量间隔ε=hc/λ随波长缩短增大，使高频激发受到热统计抑制，得到短波下降的普朗克谱。图示观测与理论计算身份分开；共同刻度保留温度和强度差异。",
+        "en": "Classical equipartition assigns mean energy kT to every mode, yielding the divergent Rayleigh–Jeans spectrum. Discrete steps ε=hc/λ grow toward shorter wavelengths, suppressing high-frequency thermal excitation and producing Planck’s short-wave decline. Illustrated observations remain distinct from calculations, with common scales preserving temperature and intensity comparisons."
+      },
+      "transfer": {
+        "question": {
+          "zh": "理想黑体从3000 K升到6000 K，峰值波长怎样变？短波辐射是否从此无限增强？",
+          "en": "An ideal blackbody heats from 3000 K to 6000 K. What happens to its peak wavelength, and does short-wave radiation now grow without limit?"
+        },
+        "explanation": {
+          "zh": "维恩关系预言峰值由约966 nm移到483 nm。温度提高使更多高频模式能被激发，但在任一有限温度下，波长足够短时量子能量仍远大于kT，普朗克谱最终下降，不发生古典发散。",
+          "en": "Wien’s relation moves the peak from about 966 nm to 483 nm. Higher temperature excites more high-frequency modes, but at any finite temperature sufficiently short wavelengths still require quanta far above kT. The Planck spectrum eventually falls rather than diverging."
+        }
       }
     }
   }

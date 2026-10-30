@@ -103,3 +103,30 @@
   line-height: 1.4;
   margin: 6px 12px;
 }
+
+@media (max-width: 480px) {
+  .fee-film[data-watch] {
+    padding-top: 12px;
+  }
+  .fee-film[data-watch] .fee-labels {
+    line-height: 1.3;
+  }
+  .fee-film[data-watch] .fee-note {
+    margin: 3px 8px;
+    line-height: 1.35;
+  }
+}
+
+/* Readable exploration controls, including single-symbol polarity choices. */
+.fee-film .segmented {
+  flex-wrap: wrap;
+}
+.fee-film .segmented button {
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1.4;
+  white-space: normal;
+  flex: 1 1 95px;
+  padding: 8px 12px;
+}

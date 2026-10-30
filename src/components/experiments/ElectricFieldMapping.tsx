@@ -18,27 +18,45 @@ const modes: FieldArrangement[] = ['single', 'dipole', 'like', 'plates'];
 export default function ElectricFieldMapping() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [mode, setMode] = useState<FieldArrangement>('single'),
-    [time, setTime] = useState(100),
-    [lines, setLines] = useState(false),
-    [contours, setContours] = useState(false),
-    [probe, setProbe] = useState({ x: 0.04, y: 0.05 });
-  const c = Math.min(3, film.chapter),
-    active = film.watch ? modes[c] : mode,
-    p = Math.max(0, Math.min(1, (film.chapterProgress - 0.1) / 0.65)),
-    elapsed = film.watch ? p * 120 : time * 1.2,
+  const p = Math.max(0, Math.min(1, (film.chapterProgress - 0.1) / 0.65)),
+    authored = {
+      mode: modes[Math.min(3, film.chapter)],
+      time: p * 100,
+      lines: p > 0.7,
+      contours: false,
+      probe: { x: 0.04, y: 0.05 },
+    },
+    [manual, setManual] = useState<typeof authored | null>(null),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<typeof authored>) => setManual({ ...state, ...patch }),
+    { mode, time, lines, contours, probe } = state,
+    active = mode,
+    elapsed = time * 1.2,
+    showLines = lines,
     paths = useMemo(() => fieldLines(active), [active]),
     equipotentials = useMemo(() => potentialContours(active), [active]),
     field = fieldAt(active, probe.x, probe.y),
-    norm = Math.hypot(field.ex, field.ey),
-    showLines = film.watch ? p > 0.7 : lines;
+    norm = Math.hypot(field.ex, field.ey);
   const moveProbe = (nx: number, ny: number) =>
-    setProbe({ x: Math.max(-0.165, Math.min(0.165, nx)), y: Math.max(-0.13, Math.min(0.13, ny)) });
+    change({
+      probe: { x: Math.max(-0.165, Math.min(0.165, nx)), y: Math.max(-0.13, Math.min(0.13, ny)) },
+    });
   return (
     <section
       className="fieldmap-film"
       data-watch={film.watch || undefined}
       data-chapter={film.chapter}
+      data-mode={mode}
+      data-time={time}
+      data-lines={lines}
+      data-contours={contours}
+      data-probe-x={probe.x}
+      data-probe-y={probe.y}
     >
       <p className="fieldmap-kicker">
         {t(
@@ -197,7 +215,7 @@ export default function ElectricFieldMapping() {
                 </g>
               ))}
           {!film.watch && field.valid && (
-            <g transform={`translate(${x(probe.x)} ${y(probe.y)})`}>
+            <g data-exploration-tool="probe" transform={`translate(${x(probe.x)} ${y(probe.y)})`}>
               <circle r="7" fill="#fdfcf0" fillOpacity=".9" stroke="#6b897b" strokeWidth="1.5" />
               <path d="M-10 0H-5M5 0H10M0 -10V-5M0 5V10" stroke="#6b897b" strokeWidth="1" />
               {norm > 1e-6 && (
@@ -216,11 +234,9 @@ export default function ElectricFieldMapping() {
         <i />
         {t('碎屑显示轴向，本身没有正负箭头')}
       </div>
-      {showLines && (
-        <div className="fieldmap-line-note">{t('细线与箭头是计算叠加，不是油中的实体。')}</div>
-      )}
+      {showLines && <div className="fieldmap-line-note">{t('细线为计算叠加，并非油中实物。')}</div>}
       {active === 'plates' && (
-        <div className="fieldmap-line-note">{t('只看两板中部：采用理想平行板近似。')}</div>
+        <div className="fieldmap-line-note">{t('中央区域作匀强场近似。')}</div>
       )}
       {!film.watch && (
         <>
@@ -246,7 +262,7 @@ export default function ElectricFieldMapping() {
             <Segments
               label={t('选择电极排列')}
               value={mode}
-              onChange={(v) => setMode(v as FieldArrangement)}
+              onChange={(v) => change({ mode: v as FieldArrangement })}
               options={[
                 { value: 'single', label: t('单电荷') },
                 { value: 'dipole', label: t('异号双电荷') },
@@ -261,13 +277,17 @@ export default function ElectricFieldMapping() {
               max={100}
               step={1}
               unit="%"
-              onChange={setTime}
+              onChange={(time) => change({ time })}
             />
             <div className="fieldmap-toggles">
-              <button type="button" aria-pressed={lines} onClick={() => setLines(!lines)}>
+              <button type="button" aria-pressed={lines} onClick={() => change({ lines: !lines })}>
                 {t('显示计算电场线')}
               </button>
-              <button type="button" aria-pressed={contours} onClick={() => setContours(!contours)}>
+              <button
+                type="button"
+                aria-pressed={contours}
+                onClick={() => change({ contours: !contours })}
+              >
                 {t('显示计算等势线')}
               </button>
             </div>

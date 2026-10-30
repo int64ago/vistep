@@ -6,7 +6,6 @@ import {
   chargedHair,
   electroSmooth,
   electroscopeState,
-  electrostaticModeForVariant,
   foilAngle,
   inductionProtocol,
   type ElectrostaticMode,
@@ -181,7 +180,7 @@ function Pair({ progress, polarity, id }: { progress: number; polarity: number; 
   );
 }
 function Jar({ proximity, precharge, id }: { proximity: number; precharge: number; id: string }) {
-  const s = electroscopeState(proximity, precharge),
+  const s = electroscopeState(proximity, precharge, 20e-9),
     rodX = 160 + proximity * 69;
   return (
     <>
@@ -328,32 +327,48 @@ function Hair({ amount }: { amount: number }) {
 export default function ElectrostaticInduction() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [mode, setMode] = useState<ElectrostaticMode>(() =>
-      electrostaticModeForVariant((film as typeof film & { variant?: string }).variant),
-    ),
-    [progress, setProgress] = useState(0.7),
-    [polarity, setPolarity] = useState('positive'),
-    [precharge, setPrecharge] = useState('0');
   const c = film.chapter,
-    p = electroSmooth((film.chapterProgress - 0.12) / 0.7);
-  const active = film.watch
-    ? c === 0
-      ? 'friction'
-      : c <= 3
-        ? 'induction'
-        : c <= 5
-          ? 'electroscope'
-          : 'hair'
-    : mode;
-  const stage = film.watch ? (c === 1 ? p : c === 2 ? 1 + p * 2 : 3 + p) : progress * 4;
-  const proximity = film.watch ? (c === 4 ? Math.sin(p * Math.PI) : p) : progress;
-  const net = film.watch ? (c === 5 ? -0.1e-9 : 0) : Number(precharge) * 1e-9;
-  const amount = film.watch ? p : progress;
+    p = electroSmooth((film.chapterProgress - 0.12) / 0.7),
+    authored = {
+      mode: (c === 0
+        ? 'friction'
+        : c <= 3
+          ? 'induction'
+          : c <= 5
+            ? 'electroscope'
+            : 'hair') as ElectrostaticMode,
+      progress:
+        c >= 1 && c <= 3
+          ? (c === 1 ? p : c === 2 ? 1 + p * 2 : 3 + p) / 4
+          : c === 4
+            ? Math.sin(p * Math.PI)
+            : p,
+      polarity: 'positive',
+      precharge: c === 5 ? '-2' : '0',
+    },
+    [manual, setManual] = useState<typeof authored | null>(null),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<typeof authored>) => setManual({ ...state, ...patch }),
+    { mode, progress, polarity, precharge } = state,
+    active = mode,
+    stage = progress * 4,
+    proximity = progress,
+    net = Number(precharge) * 1e-9,
+    amount = progress;
   return (
     <section
       className="electro-film"
       data-watch={film.watch || undefined}
       data-chapter={film.chapter}
+      data-mode={mode}
+      data-progress={progress}
+      data-polarity={polarity}
+      data-precharge={precharge}
     >
       <div className="electro-kicker">
         {t(
@@ -369,11 +384,7 @@ export default function ElectrostaticInduction() {
       {active === 'friction' ? (
         <Friction progress={amount} />
       ) : active === 'induction' ? (
-        <Pair
-          progress={stage}
-          polarity={film.watch ? 1 : polarity === 'positive' ? 1 : -1}
-          id={id}
-        />
+        <Pair progress={stage} polarity={polarity === 'positive' ? 1 : -1} id={id} />
       ) : active === 'electroscope' ? (
         <Jar proximity={proximity} precharge={net} id={id} />
       ) : (
@@ -400,7 +411,7 @@ export default function ElectrostaticInduction() {
               { value: 'electroscope', label: t('验电器') },
               { value: 'hair', label: t('带电细丝') },
             ]}
-            onChange={(v) => setMode(v as ElectrostaticMode)}
+            onChange={(v) => change({ mode: v as ElectrostaticMode })}
           />
           {mode === 'induction' && (
             <Segments
@@ -410,7 +421,7 @@ export default function ElectrostaticInduction() {
                 { value: 'positive', label: t('带正电') },
                 { value: 'negative', label: t('带负电') },
               ]}
-              onChange={setPolarity}
+              onChange={(polarity) => change({ polarity })}
             />
           )}{' '}
           {mode === 'electroscope' && (
@@ -419,10 +430,10 @@ export default function ElectrostaticInduction() {
               value={precharge}
               options={[
                 { value: '0', label: t('原先中性') },
-                { value: '.1', label: t('预先带正电') },
-                { value: '-.1', label: t('预先带负电') },
+                { value: '2', label: t('预先带正电') },
+                { value: '-2', label: t('预先带负电') },
               ]}
-              onChange={setPrecharge}
+              onChange={(precharge) => change({ precharge })}
             />
           )}
           <Range
@@ -438,7 +449,7 @@ export default function ElectrostaticInduction() {
             max={100}
             step={1}
             unit="%"
-            onChange={(v) => setProgress(v / 100)}
+            onChange={(v) => change({ progress: v / 100 })}
           />
         </div>
       )}

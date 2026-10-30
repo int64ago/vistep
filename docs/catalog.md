@@ -47,7 +47,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Bonding levels in crystals](../src/content/en/chem-crystal-bonding.mdx)                            | 2:42 | Which connections change when a crystal separates?                            |
 | [Seawater and separation membranes](../src/content/en/chem-seawater-membranes.mdx)                  | 3:47 | What crosses the membrane, and what remains?                                  |
 | [Unit cells and diffraction evidence](../src/content/en/chem-crystal-diffraction.mdx)               | 4:01 | How do bright spots reveal invisible arrangements?                            |
-| [Metal extraction routes](../src/content/en/chem-metal-extraction.mdx)                              | 3:16 | How does a metal in a mineral become an element?                              |
+| [Metal extraction routes](../src/content/en/chem-metal-extraction.mdx)                              | 4:02 | Why does the same reductant give different outcomes?                          |
 | [Separating and cracking petroleum](../src/content/en/chem-petroleum-refining.mdx)                  | 2:47 | Do fractionation and cracking both make smaller molecules?                    |
 | [The last half-drop and the burette reading](../src/content/en/chem-acid-base-titration.mdx)        | 4:11 | Why can the last half-drop change the result?                                 |
 | [Making tofu](../src/content/en/chem-tofu-coagulation.mdx)                                          | 3:07 | How does soymilk become a hydrated curd?                                      |
@@ -127,7 +127,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [From protein function to sequence evidence](../src/content/en/bio-protein-design.mdx)            | 3:22 | How can exchanging two amino acids produce a testable improvement?               |
 | [From DNA molecules to gel bands](../src/content/en/bio-dna-engineering.mdx)                      | 4:33 | After cutting, extracting and amplifying, how do we identify DNA?                |
 | [Embryo formation, transfer and splitting](../src/content/en/bio-embryo-engineering.mdx)          | 3:08 | How does an embryo form, transfer and split?                                     |
-| [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:02 | What do culture, screening and nuclear transfer each change?                     |
+| [Animal-cell culture and engineering](../src/content/en/bio-animal-cell-engineering.mdx)          | 4:30 | Why do fresh medium and splitting affect growth differently?                     |
 | [Plant-cell regeneration and fusion](../src/content/en/bio-plant-cell-engineering.mdx)            | 4:08 | Does differentiation change genetic information or how it is used?               |
 | [From dispersed cells to culture evidence](../src/content/en/bio-microbial-culture.mdx)           | 4:26 | When does a colony become credible evidence of growth?                           |
 | [Evolutionary evidence and population change](../src/content/en/bio-evolution-evidence.mdx)       | 4:45 | How do different clues reveal shared ancestry?                                   |
@@ -377,7 +377,7 @@ These optional sequences cross subject categories. The site gives a reason for e
 | [Crystal structure and anisotropy experiments](../src/content/en/solid-structure-lab.mdx)            | 2:36 | How do shape and heat flow reveal a solid’s structure?                                        |
 | [Thermal equilibrium and gas-law experiments](../src/content/en/thermal-measurement-lab.mdx)         | 3:54 | How do temperature, pressure and volume connect?                                              |
 | [Indirect observation and measurement of molecules](../src/content/en/molecular-measurement-lab.mdx) | 3:30 | What can visible changes reveal about invisible molecules?                                    |
-| [Measuring blackbody radiation](../src/content/en/blackbody-lab.mdx)                                 | 1:52 | Why does a hotter radiator peak at a shorter wavelength?                                      |
+| [Measuring blackbody radiation](../src/content/en/blackbody-lab.mdx)                                 | 2:28 | Why does short-wave radiation not grow without limit?                                         |
 | [Pressure cooker](../src/content/en/pressure-cooker.mdx)                                             | 2:28 | How do a weighted valve, absolute pressure and steam outflow set boiling temperature?         |
 | [Dew point](../src/content/en/dew-point.mdx)                                                         | 2:38 | Are dew point, relative humidity and water content the same thing?                            |
 | [Evaporative cooling](../src/content/en/evaporative-cooling.mdx)                                     | 2:31 | How do evaporation, heat from air and humidity determine water temperature?                   |

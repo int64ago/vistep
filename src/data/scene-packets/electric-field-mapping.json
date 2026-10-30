@@ -60,7 +60,15 @@
     "油盘中的电场图样": "Electric Field Patterns in Oil",
     "没有箭头的碎屑，能告诉我们怎样的电场？": "What can arrowless fragments reveal about an electric field?",
     "从油中头发碎屑的取向出发，比较单电荷、双电荷和平行板，区分观察图样与计算电场线。": "Compare hair-fragment orientations around single charges, charge pairs and parallel plates, separating observations from computed field lines.",
-    "电场图样 · 叠加": "Field patterns · Superposition"
+    "电场图样 · 叠加": "Field patterns · Superposition",
+    "从碎屑的转向开始": "Begin with turning fragments",
+    "碎屑转向，显示局部电场轴向。": "Fragments align with the local field axis.",
+    "异号电荷之间": "Between opposite charges",
+    "异号电荷之间，碎屑取向连成一束。": "Opposite charges align a connecting bundle.",
+    "同号电荷之间": "Between like charges",
+    "同号电荷之间，碎屑取向向外弯开。": "Like charges bend the alignment outward.",
+    "平行板中部": "Between parallel plates",
+    "平行板中部，碎屑近似平行。": "Between the plates, fragments align in parallel."
   },
   "narration": {
     "duration": 96,
@@ -69,11 +77,11 @@
         "id": "single-charge",
         "title": "从碎屑的转向开始",
         "titleEn": "Begin with turning fragments",
-        "caption": "极化后的碎屑逐渐沿局部电场取向。",
-        "captionEn": "Polarized fragments gradually align with the local field.",
+        "caption": "碎屑转向，显示局部电场轴向。",
+        "captionEn": "Fragments align with the local field axis.",
         "seconds": 24,
         "chapterAt": 0,
-        "at": 0.4,
+        "at": 0.45,
         "zh": "先看油盘里的短短碎屑。接入单个带电电极后，它们逐渐转向，形成放射状图样。这里我们看见的是碎屑的轴向，不是电荷正在沿一条线流动。细线随后叠加上来，帮助我们把分散的局部取向连成完整图像。",
         "en": "Look at the short fragments in the oil tray. With a single charged electrode, they gradually turn into a radial pattern. What we observe is their orientation, not charges flowing along lines. Thin calculated lines then connect these separate local observations into a field picture."
       },
@@ -81,11 +89,11 @@
         "id": "opposite-charges",
         "title": "异号电荷之间",
         "titleEn": "Between opposite charges",
-        "caption": "取向连接两端，正试探电荷的受力规定箭头方向。",
-        "captionEn": "The pattern connects the electrodes; a positive test charge defines arrow direction.",
+        "caption": "异号电荷之间，碎屑取向连成一束。",
+        "captionEn": "Opposite charges align a connecting bundle.",
         "seconds": 24,
         "chapterAt": 24,
-        "at": 24.4,
+        "at": 24.45,
         "zh": "换成一正一负两个电极。两端之间的碎屑逐渐连成弯曲的图样。碎屑本身没有箭头，电场方向要另作规定：想象放入一个很小的正试探电荷，它受到电力的方向就是电场方向。所以计算箭头从正电荷指向负电荷。",
         "en": "Now use one positive and one negative electrode. Fragments between them form a curved connecting pattern. Fragments themselves have no arrows. Direction requires a definition: imagine a very small positive test charge. Its electric-force direction defines the field, so calculated arrows run from positive to negative."
       },
@@ -93,11 +101,11 @@
         "id": "like-charges",
         "title": "同号电荷之间",
         "titleEn": "Between like charges",
-        "caption": "中央场互相抵消，周围的取向向外弯开。",
-        "captionEn": "The fields cancel at the midpoint and surrounding orientations bend outward.",
+        "caption": "同号电荷之间，碎屑取向向外弯开。",
+        "captionEn": "Like charges bend the alignment outward.",
         "seconds": 24,
         "chapterAt": 48,
-        "at": 48.4,
+        "at": 48.45,
         "zh": "把第二个电极也改成正电。图样发生了明显变化：两者之间的取向向外弯开。在完全对称的中央，两份电场方向相反、大小相等，合电场为零。这不是电势也为零。自由探索里，可以用虚拟探针比较这两个不同的量。",
         "en": "Make the second electrode positive too. The pattern changes: orientations between the charges bend outward. At the exact symmetric midpoint, equal opposite field contributions cancel. This does not mean potential is zero. In exploration, the virtual probe lets you compare these different quantities."
       },
@@ -105,11 +113,11 @@
         "id": "parallel-plates",
         "title": "平行板中部",
         "titleEn": "Between parallel plates",
-        "caption": "只看远离边缘的区域，碎屑近似平行。",
-        "captionEn": "Away from the edges, fragments are approximately parallel.",
+        "caption": "平行板中部，碎屑近似平行。",
+        "captionEn": "Between the plates, fragments align in parallel.",
         "seconds": 24,
         "chapterAt": 72,
-        "at": 72.4,
+        "at": 72.45,
         "zh": "最后换成相对的平行电极板。观察两板中部，碎屑的取向近似平行，表示电场方向较一致。这里用理想均匀场说明中央区域，边缘处的弯曲没有计算。记住：碎屑是可观察的物体，电场线则是我们描述电场的一种工具。",
         "en": "Finally use opposing parallel plates. In their central region, fragments are approximately parallel, showing a consistent field direction. This uses an ideal uniform-field approximation and does not calculate edge fringing. The fragments are observable objects; field lines are a tool for describing the field."
       }
@@ -121,6 +129,33 @@
       "label": {
         "zh": "模拟电场线",
         "en": "Model electric field lines"
+      }
+    }
+  },
+  "teachingProfiles": {
+    "r3-electric-field-lines": {
+      "sceneSlug": "electric-field-mapping",
+      "question": {
+        "zh": "油里的碎屑，真的是电场线吗？",
+        "en": "Are the fragments in oil actual field lines?"
+      },
+      "lead": {
+        "zh": "比较四种电极排列，区分碎屑轴向、计算曲线与正试探电荷的受力方向。",
+        "en": "Compare four electrode arrangements, distinguishing fragment axes, calculated curves and force on a positive test charge."
+      },
+      "principle": {
+        "zh": "极化碎屑受力矩而转向，展示局部轴向；碎屑本身没有正负箭头。电场线是描述场的计算图线，方向由正试探电荷受力定义。平行板画面只采用中部均匀场近似。",
+        "en": "Torque turns polarized fragments to reveal a local axis, without a positive or negative arrow. Field lines are a representation of the field; their direction is defined by force on a positive test charge. The plate model approximates only the central uniform region."
+      },
+      "transfer": {
+        "question": {
+          "zh": "两相同正电荷的中点，电场为零，电势也一定为零吗？",
+          "en": "At the midpoint of two equal positive charges, must zero field mean zero potential?"
+        },
+        "explanation": {
+          "zh": "不一定。两个电场矢量相反而抵消，但以无穷远为零时，两份正电势相加。虚拟探针与等势线可帮助区分这两个量。",
+          "en": "No. Opposing field vectors cancel, while positive potentials add when infinity is the reference. The virtual probe and equipotentials distinguish these quantities."
+        }
       }
     }
   }

@@ -2,6 +2,10 @@
 
 Animal-cell culture, hybridoma production and somatic-cell nuclear transfer answer different questions. Culture maintains cells; hybridomas combine persistent growth with antibody production before specificity screening; nuclear transfer introduces a somatic nuclear genome into suitable enucleated oocyte cytoplasm. Activation, development and transfer remain separate requirements. The textbook treats these processes separately on elective volume 3, pages 44–54.
 
+When a culture slows, have the cells lost their ability to grow, or have conditions changed? Watch the same surface become crowded while available resources are consumed. This teaching model selects contact-limited adherent cells: both surface availability and resources constrain growth. Fresh medium improves the medium but does not create new surface. Passage can also change density. Textbook pages 44–45 distinguish attachment, nutrient shortage, metabolite accumulation and contact inhibition. The [ATCC culture guide](https://www.atcc.org/resources/culture-guides/animal-cell-culture-guide) likewise distinguishes medium capacity from available growth surface and makes cell-line requirements explicit.
+
+Predict three treatments: no intervention, fresh medium alone, or splitting with fresh medium. All start with the same total cell population. The two treated groups receive equal total fresh medium at the same initial resource concentration. Each split vessel contains half the liquid but has the original surface area, doubling combined surface. The readout compares both vessels together. Fresh medium improves resources while crowding remains; splitting also relieves surface limitation. This assumes matched cells, environment and model time with no transfer injury. It neither predicts real culture rates nor includes difficulties caused by excessively low density.
+
 Sixteen cell symbols track identity rather than an actual inoculum. In passage, eight enter each receiving vessel. The source starts with 10 mL and each receiver with 3 mL; two 2 mL transfers preserve a combined 16 mL, including liquid temporarily inside the pipette. These values illustrate conservation, not a culture recipe.
 
 Hybridomas require survival selection and antibody-specificity screening, followed by cloning and repeated verification. A mean of one cell per well does not mean exactly one in every well. The lineage drawing assumes that single-cell origin has already been established.
@@ -10,7 +14,8 @@ At metaphase II, enucleation removes a spindle–chromosome complex rather than 
 
 <h2 id="try">Try it yourself</h2>
 
-- Compare adhesion, suspension and contact limitation. A model response for one selected condition cannot describe every animal cell line.
+- Predict whether fresh medium alone resolves crowding, then compare the three treatments. The two treated groups match total medium; counts include both split vessels.
+- Set starting resources to zero and remove contact limitation: growth still stops. Starting with no cells also gives no growth. Attachment and resource dependence answer different questions.
 - Pause passage to follow the same cell identities and liquid volumes. Horizontal pipette movement occurs above the vessel rims.
 - Switch the selective-culture condition, then separately inspect target recognition. Change mean occupancy λ to compare empty, single-cell and multiple-cell wells.
 - Track the removed MII complex, donor-cell contact, shared cytoplasm and early cleavage. Purple marks the donor nucleus; brown marks oocyte organelles.
@@ -18,7 +23,13 @@ At metaphase II, enucleation removes a spindle–chromosome complex rather than 
 
 <h2 id="deeper">Go deeper</h2>
 
-**Culture model.** Logistic growth uses N(t)=K/[1+(K/N₀−1)e^(−rt)] with N₀=4,r=0.35 and illustrative capacities 32 or 72. Time and counts are teaching scales, not a fitted cell-line dataset. Added glyphs represent population readouts, not an individual mitotic lineage. Contact inhibition varies by cell line, and suspension cultures remain resource-limited.
+**Culture model.** N is illustrative cell amount, R is a resource budget expressed as potential new-cell equivalents, A is an illustrative surface scale and V is relative medium volume:
+
+<div class="formula">dN/dτ = 0.35 N × max(0, 1 − N/A) × R/(R + 8V); dR/dτ = −dN/dτ</div>
+
+Thus N+R stays constant within a closed growth interval. This is a teaching budget for growth and resource use, not a full cellular mass balance. Visible surface and resource factors control the displayed rate. Glyphs indicate population, not individually traced mitotic lineages. Removing contact limitation sets only the surface factor to 1; resource limitation remains. Defaults N₀=4, R₀=40, A=32 and V=1, including time τ, are illustrative rather than fitted cell-line data.
+
+Interventions begin with total N=28. The untreated case keeps R=4; fresh medium restores R=24; two split vessels each have N=14, R=12, V=0.5 and A=32. The treated groups therefore match total resources, liquid volume and initial resource concentration, while splitting provides more combined surface. Further growth consumes resources and remains bounded. The model omits maintenance metabolism, waste, death, transfer injury, adaptation delay and low-density effects. Actual medium replacement can remove metabolites as well as restore nutrients. Do not infer that greater dilution is always better or that every cell type requires regular enzyme treatment.
 
 The bicarbonate approximation is pH=6.1+log₁₀([HCO₃⁻]/(0.03×pCO₂)), with concentration in mmol/L and partial pressure in mmHg. At 760 mmHg total pressure and 24 mmol/L bicarbonate, 5% CO₂ gives about 7.42. Doubling CO₂ at fixed bicarbonate lowers pH by about 0.301. Other buffers and cellular metabolism are omitted, so this is not a universal medium specification.
 

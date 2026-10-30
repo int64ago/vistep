@@ -21,7 +21,7 @@ function EvidenceJar({
     other = charge >= 0 ? '−' : '+',
     n = Math.round(Math.min(1, Math.abs(charge) / 8e-7) * 6);
   return (
-    <g transform={`translate(${x} 0)`}>
+    <g transform={`translate(${x} -20)`}>
       <rect
         x="-47"
         y="142"
@@ -84,26 +84,32 @@ function EvidenceJar({
 }
 export default function FranklinElectricityEvidence() {
   const film = useShowcase(),
-    [phase, setPhase] = useState<'charge' | 'hold' | 'discharge'>('charge'),
-    [amount, setAmount] = useState(800),
-    [cloudSign, setCloudSign] = useState<'positive' | 'negative'>('negative'),
-    [time, setTime] = useState(2);
-  const c = film.chapter,
-    p = film.chapterProgress,
-    release = film.watch ? c === 3 : phase === 'discharge',
-    u = film.watch ? 800 : amount,
-    signed = film.watch ? -u : cloudSign === 'negative' ? -u : u,
-    clock = film.watch ? Math.min(5, p * 6) : phase === 'hold' ? 5 : time,
-    left = evidenceCharge(
-      u * (release ? 1 - Math.exp(-5) : 1),
-      film.watch && c > 0 && !release ? 5 : clock,
-      release,
-    ),
-    right = evidenceCharge(
-      signed * (release ? 1 - Math.exp(-5) : 1),
-      film.watch ? (c === 0 ? 0 : c === 1 ? clock : c === 2 ? 5 : clock) : clock,
-      release,
-    ),
+    c = film.chapter,
+    directedClock = Math.min(5, film.chapterProgress * 6),
+    authored = {
+      phase: c === 3 ? 'discharge' : c === 2 ? 'hold' : 'charge',
+      amount: 800,
+      cloudSign: 'negative',
+      time: directedClock,
+      // The reference is already charged when the cloud comparison starts.
+      leftTime: c > 0 && c !== 3 ? 5 : directedClock,
+      rightTime: c === 0 ? 0 : c === 2 ? 5 : directedClock,
+    },
+    [manual, setManual] = useState<typeof authored | null>(null),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<typeof authored>) => setManual({ ...state, ...patch }),
+    { phase, amount, cloudSign, time, leftTime, rightTime } = state,
+    release = phase === 'discharge',
+    u = amount,
+    signed = cloudSign === 'negative' ? -u : u,
+    clock = time,
+    left = evidenceCharge(u * (release ? 1 - Math.exp(-5) : 1), leftTime, release),
+    right = evidenceCharge(signed * (release ? 1 - Math.exp(-5) : 1), rightTime, release),
     label = film.watch
       ? c === 0
         ? '摩擦来源：先建立可重复的实验参照'
@@ -116,7 +122,16 @@ export default function FranklinElectricityEvidence() {
         ? '隔离来源，接入支路比较释放过程'
         : '使用相同探测装置，比较不同来源';
   return (
-    <section className="fee-film" data-watch={film.watch || undefined} data-chapter={film.chapter}>
+    <section
+      className="fee-film"
+      data-watch={film.watch || undefined}
+      data-chapter={film.chapter}
+      data-phase={phase}
+      data-amount={amount}
+      data-sign={cloudSign}
+      data-left-time={leftTime}
+      data-right-time={rightTime}
+    >
       <p className="fee-kicker">{t(label)}</p>
       <div className="fee-labels">
         <span>{t('摩擦来源')}</span>
@@ -124,7 +139,7 @@ export default function FranklinElectricityEvidence() {
       </div>
       <svg
         className="fee-apparatus"
-        viewBox="0 0 460 380"
+        viewBox="0 0 460 350"
         role="img"
         aria-label={t('两路来源进入相同电容瓶与带电指示器的证据结构示意')}
       >
@@ -148,7 +163,7 @@ export default function FranklinElectricityEvidence() {
           {signed < 0 ? '−' : '+'}
         </text>
         <path
-          d="M100 75v28m-5-6 5 6 5-6M330 75v28m-5-6 5 6 5-6"
+          d="M100 65v18m-5-6 5 6 5-6M330 65v18m-5-6 5 6 5-6"
           stroke="#aebf9e"
           strokeWidth="2"
           strokeDasharray={release ? '2 8' : '4 4'}
@@ -164,14 +179,25 @@ export default function FranklinElectricityEvidence() {
         <span>{t('隔离后仍可放电')}</span>
       </div>
       <p className="fee-note">
-        {t('现代等效模型展示证据关系；不是风筝装置复原，也不是历史实测数值。')}
+        {t(
+          film.watch
+            ? '模型示意，非历史实测'
+            : '现代等效模型展示证据关系；不是风筝装置复原，也不是历史实测数值。',
+        )}
       </p>
       {!film.watch && (
         <div className="fee-controls">
           <Segments
             label={t('比较阶段')}
             value={phase}
-            onChange={setPhase}
+            onChange={(phase) =>
+              change({
+                phase,
+                time: phase === 'hold' ? 5 : 0,
+                leftTime: phase === 'hold' ? 5 : 0,
+                rightTime: phase === 'hold' ? 5 : 0,
+              })
+            }
             options={[
               { value: 'charge', label: t('积累电荷') },
               { value: 'hold', label: t('比较储存') },
@@ -185,12 +211,12 @@ export default function FranklinElectricityEvidence() {
             max={800}
             step={50}
             unit="V"
-            onChange={setAmount}
+            onChange={(amount) => change({ amount })}
           />
           <Segments
             label={t('云中来源模型的符号')}
             value={cloudSign}
-            onChange={setCloudSign}
+            onChange={(cloudSign) => change({ cloudSign })}
             options={[
               { value: 'positive', label: '+' },
               { value: 'negative', label: '−' },
@@ -204,7 +230,7 @@ export default function FranklinElectricityEvidence() {
               max={5}
               step={0.05}
               unit="s"
-              onChange={setTime}
+              onChange={(time) => change({ time, leftTime: time, rightTime: time })}
             />
           )}
         </div>

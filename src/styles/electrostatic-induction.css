@@ -166,8 +166,48 @@
   display: none;
 }
 .electro-film[data-watch] .electro-observation {
+  display: flex;
+  line-height: 1.35;
+  gap: 4px 12px;
+}
+.electro-film[data-watch][data-mode='induction'] .electro-observation b,
+.electro-film[data-watch][data-mode='hair'] .electro-observation b {
   display: none;
 }
 .electro-film[data-watch] .electro-key {
   margin: 6px 10px;
+}
+
+@media (max-width: 480px) {
+  .electro-film[data-watch] {
+    padding-top: 12px;
+  }
+  .electro-film[data-watch] .electro-apparatus {
+    height: auto;
+    margin: 0 auto 5px;
+  }
+  .electro-film[data-watch] .electro-key {
+    display: none;
+  }
+  .electro-film[data-watch] .electro-observation {
+    flex-direction: row;
+  }
+  .electro-film[data-watch] .electro-charge-pair {
+    margin: 3px 0;
+    gap: 20px;
+  }
+}
+
+/* Readable exploration controls, including single-symbol polarity choices. */
+.electro-film .segmented {
+  flex-wrap: wrap;
+}
+.electro-film .segmented button {
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1.4;
+  white-space: normal;
+  flex: 1 1 95px;
+  padding: 8px 12px;
 }

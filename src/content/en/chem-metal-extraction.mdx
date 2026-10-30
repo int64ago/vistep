@@ -1,29 +1,50 @@
 ---
 name: 'Metal extraction routes'
-title: 'How does a metal in a mineral become an element?'
+title: 'Why does the same reductant give different outcomes?'
 ---
 
 <section id="understand">
 
-## Reduction is shared; routes depend on the system
+## Why does the same reductant give different outcomes?
 
-Metallurgy reduces metals in compounds to their elemental state. The textbook groups routes into thermal decomposition, chemical reduction and electrolysis. Choice also depends on the feed, temperature, thermodynamics, product removal and cost; reactivity order is not an exception-free operating chart.
+Carbon monoxide participates in extracting iron in a blast furnace, while industrial aluminium production uses molten-salt electrolysis. Both routes let a metal gain electrons. The question is: **why can we not simply apply the same CO route to alumina?**
 
-The film compares mercury-oxide decomposition, carbon-monoxide and aluminium reduction of iron oxide, and electrolysis of sodium-chloride, magnesium-chloride and alumina-based melts. Each route keeps both element and electron accounts.
+Follow oxygen first. The net reaction `Fe₂O₃ + 3CO → 2Fe + 3CO₂` transfers it from the oxide to CO. Iron changes from oxidation state +III to zero while carbon changes from +II to +IV. The same atoms remain accounted for, and the six electrons accepted by iron have a source. This is a net equation; a blast furnace passes through intermediate iron oxides.
+
+Now compare the same amount of CO with two oxides. NIST-JANAF data give a net free-energy change of about **−25 kJ for iron oxide but +775 kJ for alumina at 1000 K and a CO₂/CO partial-pressure ratio of 1**, per mole of oxide. The common-scale bars add the positive value for reversing oxide formation to the negative value for oxidizing CO. Alumina's positive term is much larger; the same CO term cannot offset it.
+
+Free energy here is neither the temperature rise nor plant electricity use. A negative value favours the forward net reaction under the stated conditions; a positive value favours its reverse. **Favourable does not mean fast, and does not establish complete reduction.**
 
 </section>
 
 <section id="try">
 
-## Change a condition and inspect the account
+## Can the prediction change without changing the metal?
 
-Select a route and change progress to follow atom identities. Removing power or the molten condition stops the selected ideal electrolytic route. A thermal-condition switch stops the selected thermal route. These switches express required conditions; they do not predict threshold temperatures, reaction rates or electrode overpotentials.
+Predict first, then increase CO₂/CO from 1 to 10 in the comparison. The temperature and oxide remain unchanged, yet the iron reaction changes from roughly −25 to +32 kJ. Product accumulation changes the net tendency. Reactivity order is a useful summary, but cannot answer every question about temperature and gas composition.
 
-Aqueous sodium chloride cannot replace the melt to obtain sodium by this route. The phase and electrode drawings explain interfaces, not a buildable plant. The film does not provide mercury or thermite operating procedures.
+Temperature offers three actual tabulated points: 800, 1000 and 1200 K. Changing it tests the comparison rather than inventing a rate law. Switch to aluminium reducing iron oxide: at 1000 K, `Fe₂O₃ + 2Al → 2Fe + Al₂O₃` has a net free-energy change near −800 kJ; its reverse is near +800 kJ. The same data support oxygen transfer toward aluminium.
+
+In the material account, progress still tracks atoms and electrons. Removing power or the molten condition stops the selected ideal electrolytic route. The thermal-condition switch stops the selected thermal route. These are necessary-condition gates, not predictions of temperature thresholds, rates or electrode overpotentials.
+
+Aqueous sodium chloride cannot replace the melt to obtain sodium by this route. The diagrams explain phases and interfaces, not a buildable plant. They provide no mercury or thermite operating procedure.
 
 </section>
 
 <section id="deeper">
+
+<details>
+<summary>Calculation and boundaries of the comparison</summary>
+
+The NIST-JANAF standard formation Gibbs energies at 1000 K, in kJ/mol, are Fe₂O₃(cr) −561.866, α-Al₂O₃(cr) −1361.437, CO(g) −200.275 and CO₂(g) −395.886. Elements use their stable reference phases at that temperature: solid iron and liquid aluminium at 1000 K. Standard pressure is 1 bar. Pure condensed phases have unit activity, and gases are treated as ideal.
+
+For iron, `ΔG° = 3(−395.886) − [−561.866 + 3(−200.275)] = −24.967 kJ`. With partial-pressure ratio `r = p(CO₂)/p(CO)`, the net reaction quotient is `Q = r³`, so `ΔG = ΔG° + 3RT ln(r)`. The iron net equation changes sign at r about 2.72 at 1000 K. This ratio describes the gases, not amounts of oxide.
+
+Adding these terms is a state-function calculation, not a microscopic sequence that first dismantles oxide and then burns CO. Negative net ΔG does not prove that each intermediate oxide-reduction step is favourable. A real blast furnace requires separate consideration of intermediate phases, local gas composition, heat transfer and kinetics. Bars use a common absolute-value scale; the vertical gap for aluminium reduction is a net free-energy difference, not an activation-energy profile.
+
+Electrolysis supplies external electrical work. This CO comparison does not calculate cell voltage. Industrial aluminium extraction also involves a cryolite melt, overpotentials, heat losses and carbon anodes. The comparison rules out simply reusing the CO net reduction under the stated conditions; it does not rule out every alternative process at every temperature.
+
+</details>
 
 <details>
 <summary>Conservation, oxidation states and industrial limits</summary>
@@ -42,8 +63,10 @@ For aluminium production with carbon anodes, a common net equation is `2Al₂O�
 
 ## Textbook and sources
 
-PEP Compulsory Volume 2, chapter8 section1, printed pages98–99 / PDF103–104. This is a process demonstration of extraction routes, not an added practical experiment.
+PEP Compulsory Volume 2, chapter8 section1, printed pages98–99 / PDF103–104. The entry keeps the textbook learning order and explains route selection through a bounded comparison with the same reductant. It adds no practical experiment.
 
+- [NIST-JANAF: Fe₂O₃(cr)](https://janaf.nist.gov/tables/Fe-030.html), [α-Al₂O₃(cr)](https://janaf.nist.gov/tables/Al-096.html), [CO(g)](https://janaf.nist.gov/tables/C-093.html), [CO₂(g)](https://janaf.nist.gov/tables/C-095.html)
+- [OpenStax Chemistry 2e: free energy](https://openstax.org/books/chemistry-2e/pages/16-4-free-energy)
 - [OpenStax Chemistry 2e: preparation of representative metals](https://openstax.org/books/chemistry-2e/pages/18-2-occurrence-and-preparation-of-the-representative-metals)
 - [OpenStax Chemistry 2e: transition-metal metallurgy](https://openstax.org/books/chemistry-2e/pages/19-1-occurrence-preparation-and-properties-of-transition-metals-and-their-compounds)
 - [OpenStax Chemistry 2e: electrolysis](https://openstax.org/books/chemistry-2e/pages/17-7-electrolysis)

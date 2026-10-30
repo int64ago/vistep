@@ -1,7 +1,7 @@
 {
   "baselineCommit": "59ab767f60d3e1be5dad3e50bf73ea72ed1db433",
   "direction": "Rebuild the entire teaching collection in reviewed batches: observable question → evidence → causal mechanism and theory → a new prediction. Preserve textbook order and attribution. Retain scenes that already meet this standard after content review; rewrite procedural or causally incomplete films.",
-  "status": "batch-23-implemented-awaiting-final-validation-and-publication",
+  "status": "continuous-rebuild-batch-24-validation-and-batch-25-implementation",
   "acceptance": [
     "Each learning entry has a precise question and a complete causal explanation within its actual playback window.",
     "The decisive causal step is visible; longer narration or renamed experiment titles alone do not meet the brief.",
@@ -2876,7 +2876,7 @@
     },
     {
       "sceneSlug": "mechanical-energy-lab",
-      "status": "batch-23-implemented",
+      "status": "batch-23-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -2939,7 +2939,7 @@
     },
     {
       "sceneSlug": "arm-motion-lab",
-      "status": "batch-23-implemented",
+      "status": "batch-23-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3019,7 +3019,7 @@
     },
     {
       "sceneSlug": "electrostatic-induction",
-      "status": "content-reviewed-retain",
+      "status": "batch-24-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3150,7 +3150,7 @@
     },
     {
       "sceneSlug": "franklin-electricity-evidence",
-      "status": "content-reviewed-retain",
+      "status": "batch-24-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3273,7 +3273,7 @@
     },
     {
       "sceneSlug": "coulomb-torsion",
-      "status": "content-reviewed-retain",
+      "status": "batch-24-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3352,7 +3352,7 @@
     },
     {
       "sceneSlug": "electric-field-mapping",
-      "status": "content-reviewed-retain",
+      "status": "batch-24-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -3405,7 +3405,7 @@
     },
     {
       "sceneSlug": "electrostatic-applications-lab",
-      "status": "content-reviewed-retain",
+      "status": "batch-24-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -8825,7 +8825,7 @@
     },
     {
       "sceneSlug": "magdeburg-bowls-lab",
-      "status": "batch-23-implemented",
+      "status": "batch-23-published",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -9166,7 +9166,7 @@
     },
     {
       "sceneSlug": "blackbody-lab",
-      "status": "content-reviewed-revise",
+      "status": "batch-24-implemented",
       "subjects": ["physics"],
       "lessons": [
         {
@@ -13418,7 +13418,7 @@
     },
     {
       "sceneSlug": "chem-protein-states",
-      "status": "batch-23-implemented",
+      "status": "batch-23-published",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -13533,7 +13533,7 @@
     },
     {
       "sceneSlug": "chem-metal-extraction",
-      "status": "content-reviewed-revise",
+      "status": "batch-24-implemented",
       "subjects": ["chemistry"],
       "lessons": [
         {
@@ -21204,7 +21204,7 @@
     },
     {
       "sceneSlug": "bio-plant-cell-engineering",
-      "status": "batch-23-implemented",
+      "status": "batch-23-published",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -21293,7 +21293,7 @@
     },
     {
       "sceneSlug": "bio-animal-cell-engineering",
-      "status": "content-reviewed-revise",
+      "status": "batch-24-implemented",
       "subjects": ["biology"],
       "lessons": [
         {
@@ -21770,7 +21770,7 @@
       "biology-content-review.json"
     ]
   },
-  "currentBatch": 23,
+  "currentBatch": 24,
   "layoutAudit": {
     "status": "active-follow-up",
     "baselineScenes": 154,
@@ -21784,15 +21784,40 @@
       "Retain correct causal content; independently review complete windows, controls and playback before acceptance."
     ]
   },
-  "pauseAfterBatch": 19,
+  "pauseAfterBatch": null,
   "pauseReason": "B19 完成后暂停的历史请求已履行。",
-  "pauseStatus": "B19 pause fulfilled; user explicitly resumed and authorized B23 commit, push and publication on 2026-10-24",
+  "pauseStatus": "No pending pause. On 2026-10-29 the user explicitly required uninterrupted continuation until all remaining scenes are complete, with existing commit, push and publication authorization.",
   "pauseDeploymentConfirmed": true,
   "currentBatchScenes": [
-    "magdeburg-bowls-lab",
-    "chem-protein-states",
-    "bio-plant-cell-engineering",
-    "mechanical-energy-lab",
-    "arm-motion-lab"
-  ]
+    "blackbody-lab",
+    "chem-metal-extraction",
+    "bio-animal-cell-engineering",
+    "electrostatic-induction",
+    "franklin-electricity-evidence",
+    "coulomb-torsion",
+    "electric-field-mapping",
+    "electrostatic-applications-lab"
+  ],
+  "continuousCompletion": {
+    "requestedAt": "2026-10-29",
+    "targetScenes": 243,
+    "publishedAtStart": 103,
+    "remainingAtStart": 140,
+    "instruction": "不要停，直到完成剩下的所有的",
+    "batchBoundaryAction": "publish then immediately continue next batch",
+    "lastPublishedBatch": 23,
+    "lastPublishedCommit": "56d0a37808effabce84a49af04a9511a2e308f96",
+    "lastReleaseEvidence": "artifacts/teaching-principles/batch-23-release.json",
+    "nextBatchWorktree": "/Users/int64ago/.codex/worktrees/teaching-next-batch/vistep",
+    "nextBatchScenes": [
+      "atomic-scattering-lab",
+      "chem-equilibrium-response",
+      "chem-copper-etching",
+      "bio-embryo-engineering",
+      "bio-dna-replication",
+      "rc-circuit",
+      "parallel-plate-capacitor-lab",
+      "resistivity-lab"
+    ]
+  }
 }

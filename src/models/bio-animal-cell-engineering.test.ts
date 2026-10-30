@@ -1,6 +1,10 @@
 import { it, expect } from 'vitest';
 import {
-  animalGrowth,
+  cultureGrowth,
+  cultureFactors,
+  cultureComparison,
+  animalMeasuredSnapshot,
+  animalCultureDirector,
   bicarbonatePH,
   passagePositions,
   passageFrame,
@@ -10,11 +14,67 @@ import {
   enucleation,
   cloneProvenance,
 } from './bio-animal-cell-engineering';
-it('separates contact limitation from suspension resource limitation', () => {
-  expect(animalGrowth(0).n).toBe(4);
-  expect(animalGrowth(24).n).toBeLessThan(32);
-  expect(animalGrowth(24, false).n).toBeGreaterThan(animalGrowth(24).n);
-  expect(animalGrowth(24, true, false).n).toBeGreaterThan(animalGrowth(24).n);
+it('aligns the measured prediction and outcome landmarks without changing the stored process coordinate', () => {
+  for (const en of [false, true]) {
+    const at = (chapter: number, time: number) => animalMeasuredSnapshot(chapter, 0.9, time, en);
+    expect(at(1, 2).progress).toBe(0);
+    expect(at(1, 7.6).progress).toBe(1);
+    const compareAt = en ? 7.13 : 8.11,
+      resultAt = en ? 22.77 : 20.69;
+    expect(animalCultureDirector(at(2, compareAt - 0.01).progress).compare).toBe(false);
+    expect(animalCultureDirector(at(2, compareAt).progress).prediction).toBe(true);
+    const prediction = animalCultureDirector(at(2, resultAt - 0.01).progress);
+    expect(prediction.prediction).toBe(true);
+    expect(cultureComparison(prediction.growthTime).map((a) => a.total)).toEqual([28, 28, 28]);
+    expect(animalCultureDirector(at(2, en ? 33.51 : 29.29).progress).growthTime).toBeCloseTo(8, 12);
+    expect(at(3, 2).progress).toBe(0.9);
+  }
+});
+it('matches an independent separated-variable benchmark rather than a prescribed carrying-capacity curve', () => {
+  const initial = 4,
+    resources = 40,
+    budget = initial + resources,
+    surface = 32;
+  // Integral of dt/dN for the stated coupled resource/surface law, derived independently.
+  const primitive = (n: number) =>
+    (1 + 8 / budget) * Math.log(n) -
+    (1 + 8 / (budget - surface)) * Math.log(surface - n) -
+    ((surface * 8) / (budget * (surface - budget))) * Math.log(budget - n);
+  for (const t of [1, 4, 8, 16, 24]) {
+    const a = cultureGrowth(t, { initial, resources, surface });
+    expect((primitive(a.n) - primitive(initial)) / 0.35).toBeCloseTo(t, 6);
+    expect(a.n + a.resources).toBeCloseTo(budget, 12);
+  }
+  expect(cultureFactors(4, 40).rate).toBeCloseTo((0.35 * 4 * (1 - 4 / 32) * 40) / 48, 12);
+});
+it('separates medium restoration from surface relief using equal starting cells and total medium', () => {
+  const initial = cultureComparison(0),
+    later = cultureComparison(8);
+  expect(initial.map((a) => a.total)).toEqual([28, 28, 28]);
+  expect(initial.map((a) => a.totalVolume)).toEqual([1, 1, 1]);
+  expect(initial[1].initialResources).toBe(initial[2].initialResources * 2);
+  expect(initial[1].nutrient).toBe(initial[2].nutrient);
+  expect(initial[2].space).toBeGreaterThan(initial[1].space);
+  expect(later[2].total).toBeGreaterThan(later[1].total);
+  expect(later[1].total).toBeGreaterThan(later[0].total);
+  expect(later[2].total + later[2].resources * 2).toBeCloseTo(later[1].budget, 12);
+});
+it('rejects unlimited growth and keeps absent cells/resources and fully crowded surfaces as counterexamples', () => {
+  expect(cultureGrowth(24, { initial: 0 }).n).toBe(0);
+  expect(cultureGrowth(24, { initial: 4, resources: 0, adherent: false }).n).toBe(4);
+  expect(cultureGrowth(24, { initial: 32, resources: 100 }).n).toBe(32);
+  const suspended = cultureGrowth(24, { adherent: false });
+  expect(suspended.n).toBeGreaterThan(cultureGrowth(24).n);
+  expect(suspended.n).toBeLessThan(suspended.budget);
+  expect(cultureGrowth(24, { contact: false })).toEqual(suspended);
+  for (const initial of [0, 4, 16, 32])
+    for (const resources of [0, 1, 24, 64])
+      for (const contact of [true, false]) {
+        const a = cultureGrowth(24, { initial, resources, contact });
+        expect(a.n + a.resources).toBeCloseTo(initial + resources, 10);
+        expect(a.resources).toBeGreaterThanOrEqual(0);
+        expect(Number.isFinite(a.rate)).toBe(true);
+      }
 });
 it('models bicarbonate/CO2 rather than treating CO2 as a cell nutrient switch', () => {
   expect(bicarbonatePH(5)).toBeCloseTo(7.423, 2);

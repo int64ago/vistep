@@ -41,6 +41,18 @@ describe('electrostatic apparatus', () => {
       electroscopeState(0, 0.2e-9).angle,
     );
   });
+  it('preserves the neutral point when the demonstration source and precharge scale together', () => {
+    for (const proximity of [0, 0.1, 0.3, 0.6, 1]) {
+      const reference = electroscopeState(proximity, -0.1e-9, 1e-9);
+      const visible = electroscopeState(proximity, -2e-9, 20e-9);
+      expect(visible.leaves).toBeCloseTo(reference.leaves * 20, 20);
+      expect(visible.top + visible.leaves).toBeCloseTo(-2e-9, 20);
+      expect(visible.angle).toBe(foilAngle(visible.leaves));
+    }
+    const angle = electroscopeState(1, 0, 20e-9).angle;
+    expect((angle * 180) / Math.PI).toBeCloseTo(7.7736, 3);
+    expect(2 * 60 * Math.sin(angle)).toBeGreaterThan(16);
+  });
   it('balances foil Coulomb force against gravity', () => {
     const q = 0.3e-9,
       a = foilAngle(q),

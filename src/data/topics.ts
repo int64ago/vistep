@@ -383,24 +383,40 @@ export const topics: Topic[] = [
   {
     slug: 'chem-metal-extraction',
     name: '金属冶炼的还原路线',
-    title: '矿物中的金属怎样回到单质？',
-    question: '矿物中的金属怎样回到单质？',
-    description: '比较热分解、还原剂与熔盐电解，追踪元素和电子的去向。',
+    title: '同样的还原剂，为什么结果不同？',
+    question: '同样的还原剂，为什么结果不同？',
+    description: '跟住氧与电子，用同一份 CO 的有条件能量比较，预测还原路线并理解外电功的作用。',
     color: '#8f9686',
     tag: '冶炼原理',
     related: ['chem-electron-transfer', 'chem-ionic-conduction', 'chem-seawater-membranes'],
     sources: [
       {
-        title: 'OpenStax representative metals',
-        url: 'https://openstax.org/books/chemistry-2e/pages/18-2-occurrence-and-preparation-of-the-representative-metals',
+        title: 'NIST-JANAF: hematite Fe2O3(cr)',
+        url: 'https://janaf.nist.gov/tables/Fe-030.html',
       },
       {
-        title: 'OpenStax metallurgy',
+        title: 'NIST-JANAF: alpha alumina Al2O3(cr)',
+        url: 'https://janaf.nist.gov/tables/Al-096.html',
+      },
+      {
+        title: 'NIST-JANAF: carbon monoxide CO(g)',
+        url: 'https://janaf.nist.gov/tables/C-093.html',
+      },
+      {
+        title: 'NIST-JANAF: carbon dioxide CO2(g)',
+        url: 'https://janaf.nist.gov/tables/C-095.html',
+      },
+      {
+        title: 'OpenStax Chemistry 2e: free energy',
+        url: 'https://openstax.org/books/chemistry-2e/pages/16-4-free-energy',
+      },
+      {
+        title: 'OpenStax Chemistry 2e: transition-metal metallurgy',
         url: 'https://openstax.org/books/chemistry-2e/pages/19-1-occurrence-preparation-and-properties-of-transition-metals-and-their-compounds',
       },
       {
-        title: 'OpenStax electrolysis',
-        url: 'https://openstax.org/books/chemistry-2e/pages/17-7-electrolysis',
+        title: 'OpenStax Chemistry 2e: representative-metal production',
+        url: 'https://openstax.org/books/chemistry-2e/pages/18-2-occurrence-and-preparation-of-the-representative-metals',
       },
     ],
     number: '422',
@@ -1529,9 +1545,10 @@ export const topics: Topic[] = [
   {
     slug: 'bio-animal-cell-engineering',
     name: '动物细胞的培养与工程',
-    title: '培养、筛选和核移植，分别改变了什么？',
-    question: '培养、筛选和核移植，分别改变了什么？',
-    description: '追踪传代液量、杂交瘤两层筛选和核移植的细胞来源，区分生长、特异性与克隆证据。',
+    title: '培养、筛选与核移植，怎样区分限制与证据？',
+    question: '细胞增长慢下来，换液和分瓶为什么不同？',
+    description:
+      '用密度与资源解释生长，再预测传代对照；继续分清杂交瘤的筛选层次与核移植的不同来源。',
     color: '#d4bfd2',
     tag: '传代 · 杂交瘤 · 核移植',
     related: [
@@ -1554,6 +1571,10 @@ export const topics: Topic[] = [
         title:
           'Wilmut et al. — Viable offspring derived from fetal and adult mammalian cells (1997)',
         url: 'https://pubmed.ncbi.nlm.nih.gov/9039911/',
+      },
+      {
+        title: 'ATCC Animal Cell Culture Guide — growth, density and subculture',
+        url: 'https://www.atcc.org/resources/culture-guides/animal-cell-culture-guide',
       },
     ],
     number: '384',
@@ -6482,9 +6503,10 @@ export const topics: Topic[] = [
   {
     slug: 'blackbody-lab',
     name: '黑体辐射测量',
-    title: '升温时，辐射曲线的峰值为什么向短波移动？',
-    question: '升温时，辐射曲线的峰值为什么向短波移动？',
-    description: '从热腔小孔到分光测量，在同一强度刻度下比较不同温度的辐射光谱。',
+    title: '短波辐射为什么没有无限增强？',
+    question: '短波辐射为什么没有无限增强？',
+    description:
+      '从教材实验图的短波下降出发，在共同刻度上比较古典与量子预测，再用能级间隔解释差异。',
     color: '#aebfa8',
     tag: '近代物理',
     related: ['photoelectric-lab', 'thermal-process-lab'],
@@ -6496,6 +6518,10 @@ export const topics: Topic[] = [
       {
         title: 'NIST — SI constants',
         url: 'https://www.nist.gov/si-redefinition/meet-constants',
+      },
+      {
+        title: 'Max Planck (1900) — On the Theory of the Energy Distribution Law',
+        url: 'https://commons.princeton.edu/josephhenry/wp-content/uploads/sites/71/2021/01/Planck-1900-Distribution-Law.pdf',
       },
     ],
     number: '210',

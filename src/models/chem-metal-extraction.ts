@@ -215,3 +215,130 @@ export function metalDirector(chapter: number, p: number) {
     progress: c === 0 ? 0 : clamp((progress - 0.12) / 0.46),
   };
 }
+
+export const extractionTemperatures = [800, 1000, 1200] as const;
+export type ExtractionTemperature = (typeof extractionTemperatures)[number];
+export type ExtractionView = 'atoms' | 'co-comparison' | 'aluminium-energy' | 'electrolysis';
+// NIST-JANAF ΔfG° / kJ mol⁻¹, p°=1 bar. Crystalline hematite and alpha
+// alumina, gaseous CO/CO₂; elemental metals use their stable reference phase.
+// Only actual tabulated temperatures are exposed: no interpolation/extrapolation.
+// https://janaf.nist.gov/tables/{Fe-030,Al-096,C-093,C-095}.html
+export const extractionGibbsData = {
+  800: { ironOxide: -611.477, alumina: -1424.931, co: -182.497, co2: -395.586 },
+  1000: { ironOxide: -561.866, alumina: -1361.437, co: -200.275, co2: -395.886 },
+  1200: { ironOxide: -512.374, alumina: -1295.228, co: -217.819, co2: -396.098 },
+} as const;
+export function metalReductionEnergy(temperature: number = 1000, gasRatio = 1) {
+  const kelvin: ExtractionTemperature = extractionTemperatures.includes(
+    temperature as ExtractionTemperature,
+  )
+    ? (temperature as ExtractionTemperature)
+    : 1000;
+  const ratio = Number.isFinite(gasRatio) ? Math.max(0.1, Math.min(10, gasRatio)) : 1;
+  const g = extractionGibbsData[kelvin],
+    r = 0.00831446261815324;
+  const coStandard = 3 * (g.co2 - g.co),
+    gasCorrection = 3 * r * kelvin * Math.log(ratio);
+  const coChange = coStandard + gasCorrection;
+  const ironStandard = -g.ironOxide + coStandard,
+    aluminiumStandard = -g.alumina + coStandard;
+  return {
+    kelvin,
+    ratio,
+    coStandard,
+    gasCorrection,
+    coChange,
+    ironRemoval: -g.ironOxide,
+    aluminiumRemoval: -g.alumina,
+    iron: ironStandard + gasCorrection,
+    aluminium: aluminiumStandard + gasCorrection,
+    ironStandard,
+    aluminiumStandard,
+    ironEquilibriumRatio: Math.exp(-ironStandard / (3 * r * kelvin)),
+    aluminothermic: g.alumina - g.ironOxide,
+    reverseAluminothermic: g.ironOxide - g.alumina,
+  };
+}
+
+export type MetalExploration = {
+  chapter: number;
+  route: MetalRoute;
+  progress: number;
+  view: ExtractionView;
+  temperature: ExtractionTemperature;
+  gasRatio: number;
+  reverse: boolean;
+  heat: boolean;
+  power: boolean;
+  molten: boolean;
+};
+// Local seconds include the 0.45 s voiced offset. These cue boundaries were read
+// from exact-PCM word timings for B24; they do not derive chemistry from speech.
+export const metalWordTurns = {
+  zh: {
+    coComparison: 8.0,
+    coGasStart: 27.8,
+    coGasEnd: 29.7,
+    aluminiumEnergy: 9.6,
+    aluminiumReverse: 17.2,
+    aluminiumAtomsEnd: 4.1,
+    electrolysis: 8.2,
+    carbonStart: 13.5,
+    carbonEnd: 22.7,
+  },
+  en: {
+    coComparison: 8.0,
+    coGasStart: 28.1,
+    coGasEnd: 30.3,
+    aluminiumEnergy: 12.3,
+    aluminiumReverse: 18.6,
+    aluminiumAtomsEnd: 5.7,
+    electrolysis: 8.9,
+    carbonStart: 17.1,
+    carbonEnd: 26.9,
+  },
+} as const;
+export function metalPrincipleDirector(
+  chapter: number,
+  progress: number,
+  chapterTime = NaN,
+  locale: 'zh' | 'en' = 'zh',
+): MetalExploration {
+  const d = metalDirector(chapter, progress),
+    p = clamp(progress),
+    t = Number.isFinite(chapterTime)
+      ? Math.max(0, chapterTime)
+      : p * [34, 27, 50, 35, 29, 26, 41][d.chapter],
+    turn = metalWordTurns[locale];
+  let view: ExtractionView = routes[d.route].electrolytic ? 'electrolysis' : 'atoms';
+  let extent = d.progress,
+    gasRatio = 1,
+    reverse = false;
+  if (d.chapter === 0) view = 'co-comparison';
+  if (d.chapter === 2) {
+    extent = clamp((t - 1.2) / 2.8);
+    if (t >= turn.coComparison) view = 'co-comparison';
+    const q = clamp((t - turn.coGasStart) / (turn.coGasEnd - turn.coGasStart));
+    gasRatio = Math.pow(10, q * q * (3 - 2 * q));
+  }
+  if (d.chapter === 3) {
+    extent = clamp((t - 0.7) / (turn.aluminiumAtomsEnd - 0.7));
+    if (t >= turn.aluminiumEnergy) view = 'aluminium-energy';
+    reverse = t >= turn.aluminiumReverse;
+  }
+  if (d.chapter === 6) {
+    view = t < turn.electrolysis ? 'co-comparison' : 'electrolysis';
+    extent = clamp((t - turn.carbonStart) / (turn.carbonEnd - turn.carbonStart));
+  }
+  return {
+    ...d,
+    progress: extent,
+    view,
+    temperature: 1000,
+    gasRatio,
+    reverse,
+    heat: true,
+    power: true,
+    molten: true,
+  };
+}

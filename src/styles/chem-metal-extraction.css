@@ -44,15 +44,17 @@
   font-size: 16px;
   min-height: 44px;
 }
-.chem-metal-controls label {
+.chem-metal-controls label:not(.control) {
   display: flex;
   gap: 10px;
   align-items: center;
   min-height: 44px;
 }
 .chem-metal-controls input[type='checkbox'] {
-  width: 24px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  accent-color: #7c927c;
 }
 @media (min-width: 650px) {
   .chem-metal {
@@ -71,4 +73,220 @@
   .chem-metal * {
     transition: none !important;
   }
+}
+
+.chem-metal-control-label {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: -14px;
+}
+.chem-metal-controls p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+.chem-metal-energy,
+.chem-metal-al-energy {
+  max-width: 540px;
+  margin: auto;
+  font-size: 16px;
+}
+.chem-metal-conditions {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: center;
+  color: #7a8375;
+}
+.chem-metal-budget {
+  display: grid;
+  gap: 12px;
+}
+.chem-metal-energy-row > div:first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+}
+.chem-metal-energy-row > div:first-child span:last-child {
+  color: #6d7968;
+}
+.chem-metal-bar-track {
+  height: 9px;
+  margin-top: 4px;
+  border-radius: 9px;
+  background: #efeee5;
+  overflow: hidden;
+}
+.chem-metal-bar-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+.chem-metal-net {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #dddcd1;
+}
+.chem-metal-net > div {
+  display: grid;
+  gap: 4px;
+  text-align: center;
+  font-size: 16px;
+}
+.chem-metal-net strong {
+  font-size: 21px;
+  font-weight: 500;
+  color: #a07869;
+  font-variant-numeric: tabular-nums;
+}
+.chem-metal-net [data-direction='favourable'] strong {
+  color: #6f8c77;
+}
+.chem-metal-note {
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.35;
+  margin: 12px 0 2px;
+  color: #7b8574;
+}
+.chem-metal-energy-equation {
+  font-size: 18px;
+  line-height: 1.45;
+  text-align: center;
+}
+.chem-metal-energy-descent {
+  position: relative;
+  margin: 14px auto 4px;
+  max-width: 280px;
+  height: 114px;
+}
+.chem-metal-energy-descent svg {
+  width: 100%;
+  height: 100%;
+}
+.chem-metal-energy-descent span {
+  position: absolute;
+  font-size: 16px;
+}
+.chem-metal-energy-descent span:first-child {
+  left: 4px;
+  top: -7px;
+}
+.chem-metal-energy-descent span:last-child {
+  right: 2px;
+  bottom: -3px;
+}
+.chem-metal-energy-number {
+  text-align: center;
+  color: #718b78;
+  font-size: 24px;
+  margin: 8px 0;
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 650px) {
+  .chem-metal-energy {
+    padding: 12px 20px 24px;
+  }
+  .chem-metal-budget {
+    gap: 21px;
+  }
+  .chem-metal-bar-track {
+    height: 13px;
+  }
+  .chem-metal-energy-row > div:first-child {
+    font-size: 19px;
+  }
+  .chem-metal-net {
+    margin-top: 25px;
+    padding-top: 18px;
+  }
+  .chem-metal-net strong {
+    font-size: 26px;
+  }
+  .chem-metal-al-energy {
+    padding: 15px 0 25px;
+  }
+  .chem-metal-energy-descent {
+    max-width: 380px;
+    height: 150px;
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 649px) {
+  .chem-metal {
+    padding: 2px 8px;
+  }
+  .chem-metal-title {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .chem-metal-svg {
+    max-width: 240px;
+  }
+  .chem-metal-phase {
+    line-height: 1.35;
+    margin-bottom: 2px;
+  }
+  .chem-metal-equation {
+    margin: 4px auto;
+    line-height: 1.35;
+  }
+  .chem-metal-electrons {
+    line-height: 1.35;
+    margin: 3px 0 1px;
+  }
+  .chem-metal-conditions {
+    margin-bottom: 6px;
+  }
+  .chem-metal-budget {
+    gap: 8px;
+  }
+  .chem-metal-net {
+    margin-top: 10px;
+    padding-top: 8px;
+  }
+  .chem-metal-note {
+    margin-top: 8px;
+  }
+  .chem-metal-energy-descent {
+    height: 96px;
+    margin-top: 12px;
+  }
+  .showcase[data-slug='chem-metal-extraction'] .film-caption {
+    padding: 10px 14px 4px;
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    min-height: 0;
+  }
+}
+
+.chem-metal-controls .control {
+  display: block;
+  font-size: 16px;
+}
+.chem-metal-controls .control-top {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.chem-metal-controls .control output {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.chem-metal-controls .control input[type='range'] {
+  width: 100%;
+}
+
+.chem-metal-energy-number[data-direction='unfavourable'] {
+  color: #a07869;
 }

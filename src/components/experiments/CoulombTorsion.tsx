@@ -228,7 +228,7 @@ function Balance({
       </div>
       <div className="coulomb-condition">
         <i data-null={Math.abs(s.angle) < 0.001} />
-        {t(Math.abs(s.angle) < 0.001 ? 'A 已回到参考线，可比较扭角' : '先调上端，让 A 回到参考线')}
+        {t(Math.abs(s.angle) < 0.001 ? 'A 已回零' : 'A 尚未回零')}
         {probe && <span>Qₐ = {(probe.a * 1e9).toFixed(2)} nC</span>}
       </div>
     </>
@@ -237,25 +237,39 @@ function Balance({
 export default function CoulombTorsion() {
   const film = useShowcase(),
     id = useId().replaceAll(':', '');
-  const [mode, setMode] = useState(
-      film.variant === 'r3-charge-force-comparison' ? 'hanging' : 'balance',
-    ),
-    [distance, setDistance] = useState(0.09),
-    [fraction, setFraction] = useState('1'),
-    [nulling, setNulling] = useState(1),
-    [share, setShare] = useState(0);
   const c = film.chapter,
     p = smooth((film.chapterProgress - 0.12) / 0.7),
-    active = film.watch ? (c === 0 ? 'hanging' : 'balance') : mode,
-    d = film.watch ? (c === 0 ? 0.14 - 0.07 * p : c === 2 ? 0.12 - 0.06 * p : 0.08) : distance,
-    f = film.watch ? 1 : Number(fraction),
-    n = film.watch ? (c === 1 ? p : 1) : nulling,
-    sharing = film.watch ? (c === 3 ? p : null) : mode === 'sharing' ? share : null;
+    authored = {
+      mode: c === 0 ? 'hanging' : c === 3 ? 'sharing' : 'balance',
+      distance: c === 0 ? 0.14 - 0.07 * p : c === 2 ? 0.12 - 0.06 * p : 0.08,
+      fraction: '1',
+      nulling: c === 1 ? p : 1,
+      share: c === 3 ? p : 0,
+    },
+    [manual, setManual] = useState<typeof authored | null>(null),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<typeof authored>) => setManual({ ...state, ...patch }),
+    { mode, distance, fraction, nulling, share } = state,
+    active = mode,
+    d = distance,
+    f = Number(fraction),
+    n = nulling,
+    sharing = mode === 'sharing' ? share : null;
   return (
     <section
       className="coulomb-film"
       data-watch={film.watch || undefined}
       data-chapter={film.chapter}
+      data-mode={mode}
+      data-distance={distance}
+      data-fraction={fraction}
+      data-nulling={nulling}
+      data-share={share}
     >
       <p className="coulomb-kicker">
         {t(active === 'hanging' ? '先看偏角，再问力由什么决定' : '把小球调回原位，距离才得到控制')}
@@ -271,7 +285,7 @@ export default function CoulombTorsion() {
           <Segments
             label={t('选择带电小球实验')}
             value={mode}
-            onChange={setMode}
+            onChange={(mode) => change({ mode })}
             options={[
               { value: 'hanging', label: t('悬球比较') },
               { value: 'balance', label: t('扭秤测力') },
@@ -285,7 +299,7 @@ export default function CoulombTorsion() {
             max={16}
             step={0.5}
             unit="cm"
-            onChange={(v) => setDistance(v / 100)}
+            onChange={(v) => change({ distance: v / 100 })}
           />
           {mode === 'sharing' ? (
             <Range
@@ -295,13 +309,13 @@ export default function CoulombTorsion() {
               max={100}
               step={1}
               unit="%"
-              onChange={(v) => setShare(v / 100)}
+              onChange={(v) => change({ share: v / 100 })}
             />
           ) : (
             <Segments
               label={t('A 球电荷')}
               value={fraction}
-              onChange={setFraction}
+              onChange={(fraction) => change({ fraction })}
               options={[
                 { value: '1', label: 'Q' },
                 { value: '.5', label: 'Q / 2' },
@@ -318,7 +332,7 @@ export default function CoulombTorsion() {
               max={100}
               step={1}
               unit="%"
-              onChange={(v) => setNulling(v / 100)}
+              onChange={(v) => change({ nulling: v / 100 })}
             />
           )}
         </div>

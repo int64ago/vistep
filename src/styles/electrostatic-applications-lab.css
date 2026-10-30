@@ -99,3 +99,35 @@
 .ea-film[data-watch] .ea-result {
   display: none;
 }
+
+@media (max-width: 480px) {
+  .ea-film[data-watch] {
+    padding-top: 10px;
+  }
+  .ea-film[data-watch] .ea-counts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 8px;
+  }
+  .ea-film[data-watch] .ea-counts b {
+    display: block;
+    margin: 2px 0 0;
+  }
+}
+
+/* Readable exploration controls, including single-symbol polarity choices. */
+.ea-film .segmented {
+  flex-wrap: wrap;
+}
+.ea-film .segmented button {
+  font-size: 16px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 1.4;
+  white-space: normal;
+  flex: 1 1 95px;
+  padding: 8px 12px;
+}

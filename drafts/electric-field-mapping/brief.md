@@ -11,3 +11,11 @@ Sources: [OpenStax field lines](https://openstax.org/books/university-physics-vo
 Independent benchmark: 0.8 nC at 0.10 m produces 719.004143384 N/C and 71.9004143384 V. A central finite difference of potential independently verifies minus-gradient agreement for each arrangement. Boundary counterexample: opposite equal charges have zero potential but nonzero field at midpoint; like equal charges have zero field but positive potential. A zero-field rod retains its initial orientation; reversing E leaves the unoriented rod axis unchanged.
 
 Author verification: 5 numerical tests passed. Packet validation passed (4 contiguous chapters, 96 planned seconds), as did the TSX syntax check. Actual rendered desktop/mobile observation, complete playback and listening remain not run until root integration. No visual acceptance is inferred from these tests.
+
+## 2026-10-29 principle and phone review (batch 24)
+
+Re-read the supplied required-3 textbook sections in learning order, including the full surrounding explanations, rather than extracting titles. The existing physical mechanism and independent model remain appropriate. This revision restores the actual watched state on first exploration and preserves edited conditions through replay, composes the complete 320 × 568 player, and adds bilingual evidence-based textbook questions, principles and transfer predictions. Original textbook names, pages and causal chapter windows stay intact. Spoken scripts and recordings are unchanged.
+
+The five-scene state test checks every chapter's real SVG geometry across first exploration and replay, then changes real inputs and checks retention. Development inspection and initial failures are retained under `artifacts/teaching-principles/batch-24/`; frozen route checks, full native media progression, actual image review and publication are recorded separately in the batch acceptance receipt. Automated tests are not visual inspection; browser viewport emulation is not a physical-phone measurement. No new subjective listening claim is made for retained recordings.
+
+Final late-chapter phone review retains both overlay and central-field qualifications with concise on-screen wording. Full scientific conditions remain in the article and expanded model notes.

@@ -168,7 +168,7 @@ function Smoke({
     <>
       <svg
         className="ea-apparatus"
-        viewBox="0 0 400 350"
+        viewBox="0 0 400 340"
         role="img"
         aria-label={t('无底塑料瓶内的负锯齿电极、正收集片与烟粒迁移')}
       >
@@ -265,10 +265,10 @@ function Smoke({
       </svg>
       <div className="ea-counts">
         <span>
-          {t('悬浮烟粒')} <b>{s.suspended}</b>
+          {t('悬浮')} <b>{s.suspended}</b>
         </span>
         <span>
-          {t('收集片上的烟粒')} <b>{s.collected}</b>
+          {t('已收集')} <b>{s.collected}</b>
         </span>
       </div>
       <p className="ea-result">
@@ -288,71 +288,70 @@ function Smoke({
 export default function ElectrostaticApplicationsLab() {
   const film = useShowcase(),
     id = useId().replace(/:/g, ''),
-    [mode, setMode] = useState<'shield' | 'smoke'>(
-      film.variant === 'r3-electrostatic-smoke' ? 'smoke' : 'shield',
-    ),
-    [material, setMaterial] = useState<CageMaterial>('metal'),
-    [distance, setDistance] = useState(0.3),
-    [charge, setCharge] = useState(20),
-    [fields, setFields] = useState(false),
-    [phase, setPhase] = useState('collect'),
-    [time, setTime] = useState(5),
-    [voltage, setVoltage] = useState(5),
-    [charging, setCharging] = useState(true);
-  const c = film.chapter,
+    c = film.chapter,
     p = film.chapterProgress,
-    active = film.watch ? (c < 3 ? 'shield' : 'smoke') : mode,
-    m: CageMaterial = film.watch
-      ? c === 0
+    authored = {
+      mode: c < 3 ? 'shield' : 'smoke',
+      material: (c === 0
         ? 'none'
         : c === 1
           ? 'metal'
           : p < 0.5
             ? 'plastic'
-            : 'metal'
-      : material,
-    d = film.watch ? (c === 0 ? 0.37 - 0.14 * ease(p / 0.75) : 0.23) : distance,
-    elapsed = film.watch
-      ? c === 3
-        ? p * 8
-        : c === 4
-          ? 8 + p * 12
-          : 20 + p * 10
-      : phase === 'fill'
-        ? time * 0.8
-        : phase === 'collect'
-          ? 8 + time * 1.2
-          : 20 + time,
-    showFields = film.watch ? (c === 1 && p > 0.45) || c === 4 : fields,
+            : 'metal') as CageMaterial,
+      distance: c === 0 ? 0.37 - 0.14 * ease(p / 0.75) : 0.23,
+      charge: 20,
+      fields: (c === 1 && p > 0.45) || c === 4,
+      phase: c === 3 ? 'fill' : c === 4 ? 'collect' : 'stop',
+      time: p * 10,
+      voltage: 5,
+      charging: true,
+    },
+    [manual, setManual] = useState<typeof authored | null>(null),
+    [wasWatching, setWasWatching] = useState(film.watch);
+  if (film.watch !== wasWatching) {
+    setWasWatching(film.watch);
+    if (!film.watch && manual === null) setManual(authored);
+  }
+  const state = film.watch || !manual ? authored : manual,
+    change = (patch: Partial<typeof authored>) => setManual({ ...state, ...patch }),
+    { mode, material, distance, charge, fields, phase, time, voltage, charging } = state,
+    active = mode,
+    m = material,
+    d = distance,
+    showFields = fields,
+    elapsed = phase === 'fill' ? time * 0.8 : phase === 'collect' ? 8 + time * 1.2 : 20 + time,
     label =
       active === 'shield'
         ? '同一带电球、同一验电器，只改变罩的材料'
         : '烟没有消失：烟粒从空气转移到收集片';
   return (
-    <section className="ea-film" data-watch={film.watch || undefined} data-chapter={film.chapter}>
+    <section
+      className="ea-film"
+      data-watch={film.watch || undefined}
+      data-chapter={film.chapter}
+      data-mode={mode}
+      data-material={material}
+      data-distance={distance}
+      data-charge={charge}
+      data-fields={fields}
+      data-phase={phase}
+      data-time={time}
+      data-voltage={voltage}
+      data-charging={charging}
+    >
       <p className="ea-kicker">{t(label)}</p>
       {active === 'shield' ? (
-        <Shield
-          distance={d}
-          material={m}
-          charge={(film.watch ? 20 : charge) * 1e-9}
-          fields={showFields}
-          id={id}
-        />
+        <Shield distance={d} material={m} charge={charge * 1e-9} fields={showFields} id={id} />
       ) : (
-        <Smoke
-          time={elapsed}
-          voltage={(film.watch ? 5 : voltage) * 1000}
-          charging={film.watch ? true : charging}
-          fields={showFields}
-        />
+        <Smoke time={elapsed} voltage={voltage * 1000} charging={charging} fields={showFields} />
       )}
       {!film.watch && (
         <div className="ea-controls">
           <Segments
             label={t('选择静电应用')}
             value={mode}
-            onChange={setMode}
+            onChange={(mode) => change({ mode })}
             options={[
               { value: 'shield', label: t('静电屏蔽') },
               { value: 'smoke', label: t('静电除尘') },
@@ -363,7 +362,7 @@ export default function ElectrostaticApplicationsLab() {
               <Segments
                 label={t('网罩材料')}
                 value={material}
-                onChange={setMaterial}
+                onChange={(material) => change({ material })}
                 options={[
                   { value: 'none', label: t('无遮罩') },
                   { value: 'metal', label: t('金属网') },
@@ -377,7 +376,7 @@ export default function ElectrostaticApplicationsLab() {
                 max={0.37}
                 step={0.01}
                 unit="m"
-                onChange={setDistance}
+                onChange={(distance) => change({ distance })}
               />
               <Range
                 label={t('带电球电荷')}
@@ -386,7 +385,7 @@ export default function ElectrostaticApplicationsLab() {
                 max={20}
                 step={2}
                 unit="nC"
-                onChange={setCharge}
+                onChange={(charge) => change({ charge })}
               />
             </>
           ) : (
@@ -395,8 +394,7 @@ export default function ElectrostaticApplicationsLab() {
                 label={t('起电阶段')}
                 value={phase}
                 onChange={(v) => {
-                  setPhase(v);
-                  setTime(5);
+                  change({ phase: v, time: 5 });
                 }}
                 options={[
                   { value: 'fill', label: t('通电前') },
@@ -410,7 +408,7 @@ export default function ElectrostaticApplicationsLab() {
                 min={0}
                 max={10}
                 step={0.1}
-                onChange={setTime}
+                onChange={(time) => change({ time })}
               />
               <Range
                 label={t('示意电压')}
@@ -419,14 +417,18 @@ export default function ElectrostaticApplicationsLab() {
                 max={5}
                 step={0.5}
                 unit="kV"
-                onChange={setVoltage}
+                onChange={(voltage) => change({ voltage })}
               />
-              <button type="button" aria-pressed={charging} onClick={() => setCharging(!charging)}>
+              <button
+                type="button"
+                aria-pressed={charging}
+                onClick={() => change({ charging: !charging })}
+              >
                 {t(charging ? '对照：关闭烟粒荷电' : '恢复烟粒荷电')}
               </button>
             </>
           )}
-          <button type="button" aria-pressed={fields} onClick={() => setFields(!fields)}>
+          <button type="button" aria-pressed={fields} onClick={() => change({ fields: !fields })}>
             {t(fields ? '隐藏电场箭头' : '显示电场箭头')}
           </button>
         </div>

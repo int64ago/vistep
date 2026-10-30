@@ -1,13 +1,49 @@
 ---
-import { metalAtomMap } from '../../models/chem-metal-extraction';
-const atoms = metalAtomMap('carbon-monoxide', 0.85);
-const color: Record<string, string> = { Fe: '#b39373', O: '#bb7f76', C: '#79857c' };
+import { metalReductionEnergy } from '../../models/chem-metal-extraction';
+const m = metalReductionEnergy(1000, 1);
+const rows = [
+  { x: 48, oxide: 'Fe₂O₃', cost: m.ironRemoval, net: m.iron, color: '#b39373' },
+  { x: 198, oxide: 'Al₂O₃', cost: m.aluminiumRemoval, net: m.aluminium, color: '#9dabb3' },
+];
 ---
 
-<svg viewBox="0 0 320 260" aria-hidden="true"
-  >{atoms.map((a) => <circle cx={a.x} cy={a.y} r="18" fill={color[a.element]} />)}<path
-    d="M130 135H190m-10-8 10 8-10 8"
-    fill="none"
-    stroke="#a3af95"
-    stroke-width="3"></path></svg
->
+<svg viewBox="0 0 320 260" aria-hidden="true">
+  <path d="M28 221H294" fill="none" stroke="#d5d8c9" stroke-width="2" stroke-dasharray="4 6"></path>
+  {
+    rows.map((r) => (
+      <g>
+        <text x={r.x + 27} y="28" text-anchor="middle" font-size="23" fill="#8b967a">
+          {r.oxide}
+        </text>
+        <path
+          d={`M${r.x} 221V${221 - r.cost / 8}`}
+          stroke={r.color}
+          stroke-width="21"
+          stroke-linecap="round"
+        />
+        <path
+          d={`M${r.x + 42} ${221 - r.cost / 8}V${221 - r.net / 8}`}
+          stroke="#7c947f"
+          stroke-width="21"
+          stroke-linecap="round"
+        />
+        <path d={`M${r.x - 8} ${221 - r.cost / 8}H${r.x + 50}`} stroke="#bfc6b4" stroke-width="2" />
+        <path
+          d={`M${r.x + 31} ${221 - r.net / 8}H${r.x + 62}`}
+          stroke={r.net < 0 ? '#6d8e77' : '#a88b7c'}
+          stroke-width="4"
+          stroke-linecap="round"
+        />
+        <text
+          x={r.x + 42}
+          y={221 - r.cost / 8 + -m.coChange / 8 / 2 + 6}
+          text-anchor="middle"
+          font-size="18"
+          fill="#fbfcf5"
+        >
+          CO
+        </text>
+      </g>
+    ))
+  }
+</svg>

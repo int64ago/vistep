@@ -3,7 +3,7 @@ import { act, create, type ReactTestRenderer } from 'react-test-renderer';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import ModernLab, { ModernLabArtwork } from './ModernLab';
 import PhotoelectricLab from './PhotoelectricLab';
-import BlackbodyLab from './BlackbodyLab';
+import BlackbodyLab, { BlackbodyArtwork } from './BlackbodyLab';
 import OilDropLab, { OilDropArtwork } from './OilDropLab';
 import AtomicScatteringLab from './AtomicScatteringLab';
 import CathodeRayLab from './CathodeRayLab';
@@ -26,6 +26,7 @@ const film = vi.hoisted(() => ({
   variant: '',
 }));
 vi.mock('../lab/FilmContext', () => ({ useShowcase: () => film }));
+vi.mock('../lab/useCompact', () => ({ useCompact: () => false }));
 vi.mock('../../i18n', () => ({ browserLocale: () => 'en' }));
 vi.mock('../lab/Controls', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../lab/Controls')>()),
@@ -53,7 +54,7 @@ const input = (view: ReactTestRenderer, label: string) =>
 describe('modern-physics film state is independent of exploration', () => {
   const series: [string, ComponentType, number, string?, ComponentType<any>?][] = [
     ['photocell', PhotoelectricLab, 4, 'Photocell'],
-    ['blackbody', BlackbodyLab, 3],
+    ['blackbody', BlackbodyLab, 3, undefined, BlackbodyArtwork],
     ['oil drop', OilDropLab, 2, undefined, OilDropArtwork],
     ['Compton scattering', AtomicScatteringLab, 5, 'Compton scattering'],
     ['cathode rays', CathodeRayLab, 2],

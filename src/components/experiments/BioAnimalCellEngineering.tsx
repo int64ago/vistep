@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { browserLocale } from '../../i18n';
 import { useShowcase } from '../lab/FilmContext';
 import { useSignalWidth } from '../lab/SignalFigure';
 import {
   animalClamp as clamp,
-  animalGrowth,
+  cultureGrowth,
+  cultureComparison,
+  animalMeasuredSnapshot,
+  animalCultureDirector,
+  type AnimalCellSnapshot,
   bicarbonatePH,
   passageFrame,
   hybridSelection,
@@ -20,27 +24,37 @@ export default function BioAnimalCellEngineering() {
     { host, width: w } = useSignalWidth(),
     s = (z: string, e: string) => (browserLocale() === 'en' ? e : z);
   const variants = ['bio-elective-3-044-1', 'bio-elective-3-048-1', 'bio-elective-3-052-1'];
-  const [mode0, setMode] = useState(Math.max(0, variants.indexOf(f.variant ?? ''))),
-    [view, setView] = useState(0),
-    [progress, setProgress] = useState(0.65),
-    [adherent, setAdherent] = useState(true),
-    [contact, setContact] = useState(true),
-    [co2, setCo2] = useState(5),
-    [hat, setHat] = useState(true),
-    [lambda, setLambda] = useState(0.3),
-    [journal, setJournal] = useState('');
-  const mode = f.watch ? Math.min(2, Math.floor(f.chapter / 4)) : mode0,
-    local = f.watch ? f.chapter % 4 : Math.min(3, view),
-    p = f.watch ? f.chapterProgress : progress,
-    attach = f.watch ? true : adherent,
-    inhibit = f.watch ? true : contact,
-    growth = animalGrowth(p * 24, attach, inhibit),
-    pass = passageFrame(p, w),
+  const initialChapter = Math.max(0, variants.indexOf(f.variant ?? '')) * 4;
+  const authored = animalMeasuredSnapshot(
+    Math.max(f.chapter, initialChapter),
+    f.chapterProgress,
+    f.chapterTime,
+    browserLocale() === 'en',
+  );
+  const [manual, setManual] = useState<AnimalCellSnapshot | null>(null);
+  const state = f.watch ? authored : (manual ?? authored);
+  useEffect(() => {
+    if (!f.watch) setManual((previous) => previous ?? authored);
+  }, [f.watch, f.chapter, f.chapterProgress, f.chapterTime]);
+  const put = (patch: Partial<AnimalCellSnapshot>) =>
+    setManual((previous) => ({ ...(previous ?? state), ...patch }));
+  const mode = Math.min(2, Math.floor(state.chapter / 4)),
+    local = state.chapter % 4,
+    p = state.progress,
+    { adherent: attach, contact: inhibit, co2: gas, hat, lambda, journal } = state,
+    growth = cultureGrowth(p * 24, {
+      initial: state.initial,
+      resources: state.resources,
+      adherent: attach,
+      contact: inhibit,
+    }),
+    directed = animalCultureDirector(p),
+    comparisons = cultureComparison(directed.growthTime),
+    pass = passageFrame(directed.transfer, w),
     enuc = enucleation(p, w),
     fuse = donorFusion(p),
     hybrid = hybridFusion(p),
-    occupancy = cloneOccupancy(f.watch ? 0.3 : lambda),
-    gas = f.watch ? 5 + 5 * clamp((p - 0.2) / 0.65) : co2;
+    occupancy = cloneOccupancy(lambda);
   const titles = [
       s('培养条件与传代', 'Culture conditions and passage'),
       s('杂交瘤的两层筛选', 'Two stages of hybridoma screening'),
@@ -49,8 +63,8 @@ export default function BioAnimalCellEngineering() {
     views = [
       [
         s('组织分散', 'Tissue dissociation'),
-        s('生长与限制', 'Growth and limits'),
-        s('分瓶传代', 'Passage'),
+        s('什么让增殖减慢？', 'What slows growth?'),
+        s('换液还是分瓶？', 'Feed or split?'),
         s('气体与缓冲', 'Gas and buffering'),
       ],
       [
@@ -96,11 +110,16 @@ export default function BioAnimalCellEngineering() {
     return `M${r * Math.cos(a + gap)} ${r * Math.sin(a + gap)} A${r} ${r} 0 1 1 ${r * Math.cos(a - gap)} ${r * Math.sin(a - gap)}`;
   };
   return (
-    <div className="bio-animal-cell" data-watch={f.watch} ref={host}>
-      <div className="bio-animal-cell-head">{titles[mode]}</div>
+    <div
+      className="bio-animal-cell"
+      data-watch={f.watch}
+      data-snapshot={JSON.stringify(state)}
+      ref={host}
+    >
+      {!f.watch && <div className="bio-animal-cell-head">{titles[mode]}</div>}
       {mode === 0 && (
         <svg
-          viewBox={`0 0 ${w} 308`}
+          viewBox={`0 0 ${w} ${local === 1 || local === 2 ? 288 : 308}`}
           role="img"
           aria-label={s(
             '动物细胞分散、生长、分瓶传代与培养液缓冲',
@@ -136,68 +155,171 @@ export default function BioAnimalCellEngineering() {
               </text>
             </>
           ) : local === 1 ? (
-            <>
-              <ellipse
-                cx={w / 2}
-                cy="156"
-                rx={Math.min(105, w * 0.42)}
-                ry="87"
-                fill="#f1e5e6"
-                stroke="#c9b8bd"
+            <g data-population={growth.n} data-resources={growth.resources} data-rate={growth.rate}>
+              <rect
+                x={w / 2 - 112}
+                y="54"
+                width="224"
+                height="145"
+                rx="28"
+                fill="#f3e7ed"
+                stroke="#c9b8c4"
               />
-              {Array.from({ length: Math.floor(growth.n) }, (_, i) => {
-                const radius = Math.sqrt((i + 0.5) / growth.capacity),
-                  angle = i * 2.3999632297,
-                  x = w / 2 + (Math.min(105, w * 0.42) - 12) * radius * Math.cos(angle),
-                  y = 156 + 75 * radius * Math.sin(angle);
-                return cell(x, y, attach ? 6 : 5, '#c9b5c5', attach, `population-${i}`);
-              })}
-              <text x={w / 2} y="277" textAnchor="middle">
-                {s(
-                  `示意细胞量 ${growth.n.toFixed(1)}`,
-                  `Illustrative population ${growth.n.toFixed(1)}`,
-                )}
-              </text>
-              <text x={w / 2} y="303" textAnchor="middle">
-                {attach
-                  ? s('贴壁与空间限制', 'Attachment / space limits')
-                  : s('悬浮仍有营养限制', 'Suspension still has limits')}
-              </text>
-            </>
-          ) : local === 2 ? (
-            <>
-              <g transform={`translate(${w * 0.1} 52) scale(.8)`}>
-                <path d={`M${w / 2 - 38} 74v66q38 16 76 0V74`} fill="#f5eeee" stroke="#c1afb8" />
-                <path
-                  d={`M${w / 2 - 36} ${143 - pass.sourceMl * 6}h72V140q-36 13-72 0Z`}
-                  fill="#e1c8d0"
+              <path
+                d={`M${w / 2 - 106} 181Q${w / 2} 205 ${w / 2 + 106} 181`}
+                fill="none"
+                stroke="#b9a4b4"
+                strokeWidth="2"
+              />
+              {Array.from({ length: 16 }, (_, i) => (
+                <circle
+                  key={`resource-${i}`}
+                  cx={w / 2 - 90 + i * 12}
+                  cy="72"
+                  r="3"
+                  fill="#a5b38a"
+                  opacity={clamp(growth.resources / 2.5 - i)}
                 />
-                {[w * 0.25, w * 0.75].map((x, i) => (
-                  <g key={i}>
-                    <path d={`M${x - 36} 182v69q36 13 72 0v-69`} fill="#f5eeee" stroke="#c1afb8" />
-                    <path
-                      d={`M${x - 34} ${252 - pass.receivers[i] * 10}h68V250q-34 12-68 0Z`}
-                      fill="#e1c8d0"
-                    />
+              ))}
+              {Array.from({ length: 128 }, (_, i) => {
+                const angle = i * 2.3999632297,
+                  radius = Math.sqrt((i + 0.5) / Math.max(32, growth.n));
+                return (
+                  <g key={`population-${i}`} opacity={clamp(growth.n - i)}>
+                    {cell(
+                      w / 2 + 96 * radius * Math.cos(angle),
+                      138 + 46 * radius * Math.sin(angle),
+                      attach ? 11 : 5,
+                      '#c9b5c5',
+                      attach,
+                    )}
                   </g>
-                ))}
-                {pass.cells.map((a) =>
-                  cell(a.x, a.y, a.inPipette ? 2.6 : 4.5, '#c4adbf', false, a.id),
-                )}
-                <g transform={`translate(${pass.tip.x} ${pass.tip.y})`}>
-                  <path
-                    d="M-9-55v43L-3 0h6l6-12v-43"
-                    stroke="#9daab0"
-                    fill="none"
-                    strokeWidth="1.8"
-                  />
-                  <path d="M-10-57h20" stroke="#a3b1b7" strokeWidth="6" />
-                </g>
-              </g>
-              <text x={w / 2} y="294" textAnchor="middle">
-                {s('同16个标记 · 分成8与8', 'Same 16 labels → 8 and 8')}
+                );
+              })}
+              <text x={w / 2} y="224" textAnchor="middle">
+                {s('表面因子', 'Surface factor')} {Math.round(growth.space * 100)}%
               </text>
-            </>
+              <text x={w / 2} y="248" textAnchor="middle">
+                {s('资源因子', 'Resource factor')} {Math.round(growth.nutrient * 100)}% ·{' '}
+                {s('教学模型', 'model')}
+              </text>
+              <text x={w / 2} y="275" textAnchor="middle">
+                {s('增殖速率', 'Growth rate')} {growth.rate.toFixed(2)}
+              </text>
+            </g>
+          ) : local === 2 ? (
+            directed.compare ? (
+              <g data-comparison-time={directed.growthTime}>
+                <text x={w / 2} y="49" textAnchor="middle">
+                  {s('同细胞总量 · 同培养液总量', 'Same cells · same total medium')}
+                </text>
+                {comparisons.map((a, i) => {
+                  const y = 63 + i * 70,
+                    x = w < 420 ? 58 : w * 0.3;
+                  const label =
+                    i === 0
+                      ? s('不处理', 'Unchanged')
+                      : i === 1
+                        ? s('只换液', 'Fresh medium')
+                        : s('分瓶并补液', 'Split + fresh');
+                  return (
+                    <g
+                      key={a.kind}
+                      data-case={a.kind}
+                      data-n={a.n}
+                      data-total={a.total}
+                      data-resources={a.resources}
+                      data-rate={a.totalRate}
+                    >
+                      <rect
+                        x={x - 45}
+                        y={y}
+                        width="90"
+                        height="45"
+                        rx="12"
+                        fill="#f2e5eb"
+                        stroke="#c6afbf"
+                      />
+                      {Array.from({ length: 32 }, (_, j) => (
+                        <g key={j} opacity={clamp(a.n - j)}>
+                          {cell(
+                            x - 34 + (j % 8) * 9,
+                            y + 17 + Math.floor(j / 8) * 7,
+                            3.2,
+                            '#b99eb8',
+                            true,
+                          )}
+                        </g>
+                      ))}
+                      {Array.from({ length: 8 }, (_, j) => (
+                        <circle
+                          key={j}
+                          cx={x - 31 + j * 9}
+                          cy={y + 6}
+                          r="2"
+                          fill="#8caa6e"
+                          opacity={clamp(a.resources / 3 - j)}
+                        />
+                      ))}
+                      <text x={x} y={y + 60} textAnchor="middle">
+                        {a.vessels === 2 ? s('2瓶 · 面积×2', '2 × area') : s('原面积', 'Same area')}
+                      </text>
+                      <text x={w < 420 ? 118 : w * 0.53} y={y + 13}>
+                        {label}
+                      </text>
+                      <text x={w < 420 ? 118 : w * 0.53} y={y + 37}>
+                        {directed.prediction
+                          ? s('预测新增长', 'Predict growth')
+                          : `${s('新增', 'Added')} +${(a.total - 28).toFixed(1)}`}
+                      </text>
+                    </g>
+                  );
+                })}
+                {directed.prediction && (
+                  <text x={w - 18} y="271" textAnchor="end" fill="#8d9c72">
+                    ?
+                  </text>
+                )}
+              </g>
+            ) : (
+              <>
+                <g transform={`translate(${w * 0.1} 31) scale(.8)`}>
+                  <path d={`M${w / 2 - 38} 74v66q38 16 76 0V74`} fill="#f5eeee" stroke="#c1afb8" />
+                  <path
+                    d={`M${w / 2 - 36} ${143 - pass.sourceMl * 6}h72V140q-36 13-72 0Z`}
+                    fill="#e1c8d0"
+                  />
+                  {[w * 0.25, w * 0.75].map((x, i) => (
+                    <g key={i}>
+                      <path
+                        d={`M${x - 36} 182v69q36 13 72 0v-69`}
+                        fill="#f5eeee"
+                        stroke="#c1afb8"
+                      />
+                      <path
+                        d={`M${x - 34} ${252 - pass.receivers[i] * 10}h68V250q-34 12-68 0Z`}
+                        fill="#e1c8d0"
+                      />
+                    </g>
+                  ))}
+                  {pass.cells.map((a) =>
+                    cell(a.x, a.y, a.inPipette ? 2.6 : 4.5, '#c4adbf', false, a.id),
+                  )}
+                  <g transform={`translate(${pass.tip.x} ${pass.tip.y})`}>
+                    <path
+                      d="M-9-55v43L-3 0h6l6-12v-43"
+                      stroke="#9daab0"
+                      fill="none"
+                      strokeWidth="1.8"
+                    />
+                    <path d="M-10-57h20" stroke="#a3b1b7" strokeWidth="6" />
+                  </g>
+                </g>
+                <text x={w / 2} y="278" textAnchor="middle">
+                  {s('同16个标记 · 分成8与8', 'Same 16 labels → 8 and 8')}
+                </text>
+              </>
+            )
           ) : (
             <>
               <rect
@@ -286,7 +408,7 @@ export default function BioAnimalCellEngineering() {
               {(['B', 'M', 'BM-target', 'BM-other'] as HybridKind[]).map((k, i) => {
                 const x = w * (i % 2 ? 0.75 : 0.25),
                   y = i < 2 ? 112 : 220,
-                  a = hybridSelection(k, p, f.watch ? true : hat);
+                  a = hybridSelection(k, p, hat);
                 return (
                   <g key={k}>
                     <circle cx={x} cy={y} r="33" fill="#eee6e4" stroke="#c5b4bf" />
@@ -299,9 +421,7 @@ export default function BioAnimalCellEngineering() {
                 );
               })}
               <text x={w / 2} y="55" textAnchor="middle">
-                {f.watch || hat
-                  ? s('选择条件：HAT', 'Selection: HAT')
-                  : s('普通培养条件', 'Ordinary culture')}
+                {hat ? s('选择条件：HAT', 'Selection: HAT') : s('普通培养条件', 'Ordinary culture')}
               </text>
             </>
           ) : local === 2 ? (
@@ -360,7 +480,7 @@ export default function BioAnimalCellEngineering() {
                 {s('单细胞来源仍需验证', 'Verify single-cell origin')}
               </text>
               <text x={w / 2} y="275" textAnchor="middle">
-                λ {f.watch ? 0.3 : lambda} · P(≥2) {(occupancy.multi * 100).toFixed(1)}%
+                λ {lambda} · P(≥2) {(occupancy.multi * 100).toFixed(1)}%
               </text>
               <text x={w / 2} y="305" textAnchor="middle">
                 {s('有限稀释不自动保证单克隆', 'Dilution ≠ monoclonality')}
@@ -525,8 +645,7 @@ export default function BioAnimalCellEngineering() {
                 key={i}
                 aria-pressed={mode === i}
                 onClick={() => {
-                  setMode(i);
-                  setView(0);
+                  put({ chapter: i * 4 });
                 }}
               >
                 {t}
@@ -535,7 +654,11 @@ export default function BioAnimalCellEngineering() {
           </div>
           <div className="bio-animal-cell-buttons">
             {views[mode].map((t, i) => (
-              <button key={i} aria-pressed={local === i} onClick={() => setView(i)}>
+              <button
+                key={i}
+                aria-pressed={local === i}
+                onClick={() => put({ chapter: mode * 4 + i })}
+              >
                 {t}
               </button>
             ))}
@@ -547,39 +670,97 @@ export default function BioAnimalCellEngineering() {
               min="0"
               max="1"
               step=".005"
-              value={progress}
-              onChange={(e) => setProgress(+e.target.value)}
+              value={p}
+              onChange={(e) => put({ progress: +e.target.value })}
             />
           </label>
           {mode === 0 && local === 1 && (
             <>
-              <button aria-pressed={adherent} onClick={() => setAdherent(!adherent)}>
-                {adherent ? s('贴壁培养', 'Adherent') : s('悬浮培养', 'Suspension')}
+              <button aria-pressed={attach} onClick={() => put({ adherent: !attach })}>
+                {attach ? s('贴壁培养', 'Adherent') : s('悬浮培养', 'Suspension')}
               </button>
-              {adherent && (
-                <button aria-pressed={contact} onClick={() => setContact(!contact)}>
-                  {contact
+              <label>
+                {s('起始细胞量（教学单位）', 'Starting cells (model units)')} {state.initial}
+                <input
+                  type="range"
+                  min="0"
+                  max="32"
+                  step="1"
+                  value={state.initial}
+                  onChange={(e) => put({ initial: +e.target.value })}
+                />
+              </label>
+              <label>
+                {s('起始资源（教学单位）', 'Starting resources (model units)')} {state.resources}
+                <input
+                  type="range"
+                  min="0"
+                  max="64"
+                  step="1"
+                  value={state.resources}
+                  onChange={(e) => put({ resources: +e.target.value })}
+                />
+              </label>
+              {attach && (
+                <button aria-pressed={inhibit} onClick={() => put({ contact: !inhibit })}>
+                  {inhibit
                     ? s('有接触抑制', 'Contact inhibition')
                     : s('接触抑制减弱的变式', 'Reduced contact inhibition')}
                 </button>
               )}
             </>
           )}
+          {mode === 0 && local === 2 && (
+            <div className="bio-animal-cell-prediction">
+              <p>
+                {s(
+                  '同一拥挤起点，哪种处理新增细胞更多？',
+                  'From the same crowded start, which adds more cells?',
+                )}
+              </p>
+              <div className="bio-animal-cell-buttons">
+                {comparisons.map((a, i) => (
+                  <button
+                    key={a.kind}
+                    aria-pressed={state.prediction === a.kind}
+                    onClick={() => put({ prediction: a.kind, progress: 0.55 })}
+                  >
+                    {
+                      [
+                        s('不处理', 'Unchanged'),
+                        s('只换液', 'Fresh medium'),
+                        s('分瓶并补液', 'Split + fresh'),
+                      ][i]
+                    }
+                  </button>
+                ))}
+              </div>
+              <button onClick={() => put({ progress: 0.95 })}>
+                {s('检验预测', 'Test prediction')}
+              </button>
+              <p>
+                {s(
+                  '只换液与分瓶组补入等总量的新培养液。分瓶组每瓶液量减半，总表面积加倍；比较两瓶合计。教学模型不预测真实培养率。',
+                  'Fresh-medium and split groups receive the same total fresh medium. Each split vessel holds half the liquid; combined surface doubles. Compare both vessels together. This model does not predict real culture rates.',
+                )}
+              </p>
+            </div>
+          )}
           {mode === 0 && local === 3 && (
             <label>
-              CO₂ {co2}%
+              CO₂ {gas.toFixed(1)}%
               <input
                 type="range"
                 min="1"
                 max="10"
                 step=".5"
-                value={co2}
-                onChange={(e) => setCo2(+e.target.value)}
+                value={gas}
+                onChange={(e) => put({ co2: +e.target.value })}
               />
             </label>
           )}
           {mode === 1 && local === 1 && (
-            <button aria-pressed={hat} onClick={() => setHat(!hat)}>
+            <button aria-pressed={hat} onClick={() => put({ hat: !hat })}>
               {hat ? s('HAT选择条件', 'HAT selection') : s('普通培养条件', 'Ordinary culture')}
             </button>
           )}
@@ -592,7 +773,7 @@ export default function BioAnimalCellEngineering() {
                 max="2"
                 step=".1"
                 value={lambda}
-                onChange={(e) => setLambda(+e.target.value)}
+                onChange={(e) => put({ lambda: +e.target.value })}
               />
             </label>
           )}
@@ -609,7 +790,7 @@ export default function BioAnimalCellEngineering() {
                 '材料、条件、对照、观察与出处',
                 'Material, conditions, controls, observations and source',
               )}
-              <textarea value={journal} onChange={(e) => setJournal(e.target.value)} />
+              <textarea value={journal} onChange={(e) => put({ journal: e.target.value })} />
             </label>
           </details>
         </div>

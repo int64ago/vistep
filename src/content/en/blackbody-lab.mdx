@@ -1,20 +1,34 @@
-<h2 id="understand">Compare both the peak and the intensity</h2>
+<h2 id="understand">Why does radiation turn downward at short wavelengths?</h2>
 
-A small opening in a heated cavity approximates a blackbody. Spectral measurements resolve radiation at different wavelengths. Heating increases emission and moves the peak toward shorter wavelengths. Every curve uses the same intensity scale rather than being normalized to its own maximum.
+A small opening in a heated cavity approximates a blackbody. Spectroscopy reveals two changes during heating: emission increases and the peak moves toward shorter wavelengths. Beyond that peak, however, emission falls toward the short-wave end. A theory must explain that turn.
 
-<h2 id="try">Track a changing temperature</h2>
+The open circles are approximate readings from Figure 4.1-3 on printed page 68 of the supplied PEP senior-high Physics, Elective 3 textbook, illustrating a spectrum at 1600 K. They are **the textbook’s graphical account of an experiment**, without its original measurement table or uncertainties. They are neither new measurements nor samples generated from Planck’s equation. Both plotted lines are explicitly theoretical predictions.
 
-Change the furnace temperature and follow the peak marker. Compare with the 3000 K and 5000 K references. The graph spans 200–2000 nm, including ultraviolet and near infrared; colors in the apparatus identify separated rays, not the visibility of the full spectrum.
+<h2 id="try">Confront two explanations with the same trend</h2>
 
-<h2 id="deeper">Model limits</h2>
+The historical comparison holds temperature at 1600 K and spans 0–8 µm. The dashed Rayleigh–Jeans prediction rises toward shorter wavelengths. Its arrow marks a continuation beyond the plot, while the textbook circles turn downward. Both predictions share one relative ordinate, divided by the 1600 K Planck peak; they are not independently normalized. The textbook illustration has no absolute intensity calibration, so this is a comparison of shapes and trends, not a precision fit.
+
+Choose temperature prediction to vary the temperature from 1600 to 6500 K alongside fixed 3000 K and 5000 K references. Every curve in this view is calculated and uses a common fixed intensity scale. The peak changes from about 966 nm at 3000 K to 483 nm at 6000 K: doubling temperature halves the peak wavelength of the wavelength spectrum.
+
+<h2 id="deeper">What changes is the mean energy of each mode</h2>
+
+Classical equipartition assigns each electromagnetic mode mean energy kT. Together with the increasing number of short-wave modes, it gives the Rayleigh–Jeans spectrum. This works in the long-wave limit but diverges toward short wavelengths.
+
+Planck introduced discrete energy units. Higher frequency means larger steps, ε = hν = hc/λ. At the same temperature, high-energy excitations have lower statistical weights, so each mode’s mean energy no longer stays at kT. The energy bars, discrete ticks and mean-energy readout all depend on the same wavelength input. kT is a thermal scale, **not a fixed energy allowance for every oscillator**; quantum suppression has no abrupt wavelength cutoff.
 
 <details>
-<summary>Planck’s spectrum and Wien’s displacement</summary>
+<summary>Equations, units and limitations</summary>
 
-<div className="formula">Bλ = 2hc²/[λ⁵(exp(hc/λkT)−1)]; λmax T ≈ 2.898×10⁻³ m·K</div>
+<div className="formula">ε = hc/λ; x = ε/(kT); ⟨E⟩ = ε/[exp(x)−1] = kT·x/[exp(x)−1]</div>
 
-The model calculates ideal blackbody radiance per unit wavelength. Real emissivity and detector response are omitted. Wavelength and frequency spectral peaks are not simple reciprocals. The finite plot does not contain all radiation, and its truncated area is not used to measure the Stefan–Boltzmann constant.
+<div className="formula">
+  Bλ(RJ) = 2 ckT/λ⁴; Bλ(Planck) = Bλ(RJ)·x/[exp(x)−1]; λmax T ≈2898 µm·K
+</div>
 
-The apparatus is schematic, with display-scaled dimensions and detector motion. The curves are calculated rather than historical measurements.
+The model computes spectral radiance per unit wavelength, internally in W·m⁻²·sr⁻¹·µm⁻¹, then uses the disclosed common plot scales. For small x, the correction approaches one and recovers the classical limit. For large x, exponential suppression overcomes the increasing mode density. Independent discrete Boltzmann summation checks the mean energy; full-spectrum integration checks the Stefan–Boltzmann relation.
+
+Real emissivity, detector response, calibration and experimental uncertainties are omitted. Frequency-density and wavelength-density peaks are not simple reciprocals. A finite plot does not contain all emitted radiation. The cavity and spectrometer paths are schematic; ray colors distinguish wavelength bands and do not imply that the whole spectrum is visible.
+
+The classical short-wave conflict is used here as a teaching comparison. The actual history also involved long-wave departures from Wien’s formula; it was not a single ultraviolet-catastrophe graph followed immediately by Planck’s discovery. [Planck’s 1900 report](https://commons.princeton.edu/josephhenry/wp-content/uploads/sites/71/2021/01/Planck-1900-Distribution-Law.pdf) describes energy elements and statistical allocation. The [OpenStax blackbody chapter](https://openstax.org/books/university-physics-volume-3/pages/6-1-blackbody-radiation) provides the physical relations.
 
 </details>

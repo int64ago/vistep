@@ -77,20 +77,32 @@
     "隐藏电场箭头": "Hide field arrows",
     "显示电场箭头": "Show field arrows",
     "屏蔽与除尘模型的近似": "Shielding and collection approximations",
-    "金属网近似为闭合、孤立、中性的球形导体壳，忽略网孔附近漏场；外部球用点电荷近似，表面电荷由镜像解计算。绝缘网不发生自由电荷重排，本模型忽略其介电极化。除尘图采用代表性放大烟粒：荷电随时间趋近饱和，电场力与黏滞阻力平衡，收集后保留粒子位置。尖端放电以荷电开关表示，不计算电离雪崩、空间电荷与真实收集效率。": "The metal mesh is approximated by a closed, isolated neutral spherical conductor, omitting leakage near holes. The external sphere is a point-charge approximation; surface charge follows an image solution. The insulating mesh has no free-charge redistribution; dielectric polarization is omitted. Enlarged representative smoke particles charge toward saturation and drift under electric force balanced by viscous drag. Collected positions persist. A charging switch represents corona; ionization avalanches, space charge and actual collection efficiency are not calculated."
+    "金属网近似为闭合、孤立、中性的球形导体壳，忽略网孔附近漏场；外部球用点电荷近似，表面电荷由镜像解计算。绝缘网不发生自由电荷重排，本模型忽略其介电极化。除尘图采用代表性放大烟粒：荷电随时间趋近饱和，电场力与黏滞阻力平衡，收集后保留粒子位置。尖端放电以荷电开关表示，不计算电离雪崩、空间电荷与真实收集效率。": "The metal mesh is approximated by a closed, isolated neutral spherical conductor, omitting leakage near holes. The external sphere is a point-charge approximation; surface charge follows an image solution. The insulating mesh has no free-charge redistribution; dielectric polarization is omitted. Enlarged representative smoke particles charge toward saturation and drift under electric force balanced by viscous drag. Collected positions persist. A charging switch represents corona; ionization avalanches, space charge and actual collection efficiency are not calculated.",
+    "先看无遮罩的响应": "Observe the uncovered detector",
+    "无遮罩时，外部电荷使箔片张开。": "Without a shield, the leaves open.",
+    "罩上金属网": "Add the conducting cage",
+    "表面电荷重排，内部电场抵消。": "Surface charges cancel the interior field.",
+    "形状相同还不够": "Shape alone is not enough",
+    "材料决定能否重排自由电荷。": "The material determines charge redistribution.",
+    "烟先进入瓶内": "Smoke enters the bottle",
+    "起电前，烟粒随气流进入。": "Before charging, particles enter with the flow.",
+    "荷电后向收集片迁移": "Charge and migrate to the collector",
+    "带负电的烟粒移向正极板。": "Negative particles drift to the positive plate.",
+    "停止起电后再看": "Observe after switch-off",
+    "停止起电，已收集的烟粒仍留在板上。": "Switch off: captured particles stay on the plate."
   },
   "narration": {
-    "duration": 148,
+    "duration": 149.5,
     "cues": [
       {
         "id": "uncovered-detector",
         "title": "先看无遮罩的响应",
         "titleEn": "Observe the uncovered detector",
-        "caption": "带电球靠近，验电器内部电荷重新分布。",
-        "captionEn": "As the sphere approaches, charge redistributes within the detector.",
+        "caption": "无遮罩时，外部电荷使箔片张开。",
+        "captionEn": "Without a shield, the leaves open.",
         "seconds": 22,
         "chapterAt": 0,
-        "at": 0.4,
+        "at": 0.45,
         "zh": "先不放网罩，让同一个带电金属球逐渐靠近验电器，保持不接触。箔片张开，是因为外部电场使验电器内部电荷重新分布。这个响应是接下来比较网罩作用的参照；不是金属球把电荷直接送进了验电器。",
         "en": "First leave the detector uncovered. Bring the same charged sphere closer without contact. The leaves open because the external field redistributes charge within the electroscope. This is the reference for the cage comparison; the source sphere has not directly transferred charge into the detector."
       },
@@ -98,11 +110,11 @@
         "id": "metal-cage",
         "title": "罩上金属网",
         "titleEn": "Add the conducting cage",
-        "caption": "表面电荷重排，使内部的外加场被抵消。",
-        "captionEn": "Redistributed surface charge cancels the applied field inside.",
+        "caption": "表面电荷重排，内部电场抵消。",
+        "captionEn": "Surface charges cancel the interior field.",
         "seconds": 28,
         "chapterAt": 22,
-        "at": 22.4,
+        "at": 22.45,
         "zh": "保持带电球和验电器不变，罩上金属网。现在自由电荷先在网罩表面重新分布，它们产生的场抵消内部的外加电场，箔片保持闭合。箭头显示外部电场依然存在，所以屏蔽不是让外面的电消失。模型把足够细的网近似成闭合导体壳，网孔附近的细节没有计算。",
         "en": "Keep the source and detector unchanged and add the metal mesh. Free charge redistributes on its surface, canceling the applied field inside, so the leaves stay closed. Field arrows still exist outside: shielding does not erase the external electricity. The model approximates a sufficiently fine mesh by a closed conductor and omits details near individual holes."
       },
@@ -110,11 +122,11 @@
         "id": "insulating-control",
         "title": "形状相同还不够",
         "titleEn": "Shape alone is not enough",
-        "caption": "绝缘网缺少自由电荷重排，不能提供同样的屏蔽。",
-        "captionEn": "An insulating mesh cannot provide the same free-charge redistribution.",
+        "caption": "材料决定能否重排自由电荷。",
+        "captionEn": "The material determines charge redistribution.",
         "seconds": 24,
         "chapterAt": 50,
-        "at": 50.4,
+        "at": 50.45,
         "zh": "换成相同外形的绝缘网，箔片又张开了。网的外形和位置都相似，但它没有金属中能重新分布的自由电荷。再换回金属网，内部响应恢复到闭合。这个对照指出了原因：起作用的是导体的电学性质，不能只看有没有罩住。",
         "en": "Replace the cage with an insulating mesh of the same shape. The leaves open again. Geometry and position are similar, but the freely redistributing charges of a metal are absent. Switching back to metal closes the detector. The comparison identifies the cause: conducting behavior matters, not simply whether something surrounds the detector."
       },
@@ -122,11 +134,11 @@
         "id": "smoke-before",
         "title": "烟先进入瓶内",
         "titleEn": "Smoke enters the bottle",
-        "caption": "未起电时，烟粒随空气运动。",
-        "captionEn": "Before energizing, smoke follows the air.",
+        "caption": "起电前，烟粒随气流进入。",
+        "captionEn": "Before charging, particles enter with the flow.",
         "seconds": 22,
         "chapterAt": 74,
-        "at": 74.4,
+        "at": 74.45,
         "zh": "换一套装置：无底塑料瓶里，锯齿电极和金属收集片彼此分开，下面的蚊香持续产生烟。先不摇动起电机，烟粒随空气进入并悬浮。图中的颗粒已经放大，只代表可追踪的烟粒，不是真实烟粒的尺寸和数量。",
         "en": "Now use a different apparatus. A serrated electrode and collecting plate are separated inside a bottomless plastic bottle, while an incense coil supplies smoke below. Before the generator is operated, particles enter with the air and remain suspended. The enlarged dots are representative traceable particles, not their actual size or count."
       },
@@ -134,11 +146,11 @@
         "id": "smoke-collection",
         "title": "荷电后向收集片迁移",
         "titleEn": "Charge and migrate to the collector",
-        "caption": "负烟粒受力方向与电场方向相反。",
-        "captionEn": "Negative particles move opposite the field direction.",
+        "caption": "带负电的烟粒移向正极板。",
+        "captionEn": "Negative particles drift to the positive plate.",
         "seconds": 28,
-        "chapterAt": 96,
-        "at": 96.4,
+        "chapterAt": 97,
+        "at": 97.45,
         "zh": "摇动起电机，让锯条接负极、金属片接正极。锯齿尖端附近场强较大，有利于形成使烟粒荷电的放电过程。带负电的烟粒受到指向正收集片的电场力，逐渐迁移并附着在片上。追踪同一个颗粒，会看到它停在收集片上，而不是凭空消失。",
         "en": "Operate the generator with the serrated electrode negative and plate positive. The stronger field near sharp tips supports the discharge that charges smoke. Negative particles feel force toward the positive collector, migrate and attach. Track one particle: it stops on the plate instead of disappearing from the model."
       },
@@ -146,11 +158,11 @@
         "id": "smoke-after",
         "title": "停止起电后再看",
         "titleEn": "Observe after switch-off",
-        "caption": "新烟仍进入，先前收集的烟粒仍留在片上。",
-        "captionEn": "New smoke continues entering while earlier particles remain collected.",
+        "caption": "停止起电，已收集的烟粒仍留在板上。",
+        "captionEn": "Switch off: captured particles stay on the plate.",
         "seconds": 24,
-        "chapterAt": 124,
-        "at": 124.4,
+        "chapterAt": 125,
+        "at": 125.45,
         "zh": "停止起电，电迁移不再继续，但蚊香还在供烟，悬浮烟粒重新增多。先前沉积的颗粒仍保留在收集片上。这个过程说明，静电除尘把颗粒从空气转移到表面；它没有消灭物质，也不能据这幅简化图给出真实设备的收集效率。",
         "en": "Stop energizing the electrodes. Electrical migration ends, but the coil keeps supplying smoke and suspended particles accumulate again. Earlier deposits remain on the collector. Electrostatic precipitation transfers particles from air to a surface; it does not destroy matter, and this simplified diagram does not predict a real device’s collection efficiency."
       }
@@ -169,6 +181,58 @@
       "label": {
         "zh": "静电除尘",
         "en": "Electrostatic precipitation"
+      }
+    }
+  },
+  "teachingProfiles": {
+    "r3-electrostatic-shielding": {
+      "sceneSlug": "electrostatic-applications-lab",
+      "question": {
+        "zh": "金属罩为什么能让里面的箔片合拢？",
+        "en": "Why can a metal enclosure close the leaves inside?"
+      },
+      "lead": {
+        "zh": "保持外部电荷与验电器，比较无遮罩、金属罩和绝缘罩。",
+        "en": "Keep the external charge and electroscope while comparing no enclosure, metal and an insulator."
+      },
+      "principle": {
+        "zh": "金属中的自由电荷重排，表面电荷产生的场在内部抵消外场。闭合、中性、内部无电荷的理想导体壳内场为零，但外部电场仍存在。网孔漏场与绝缘材料的介电极化在本模型中忽略。",
+        "en": "Free charge in the metal redistributes so its field cancels the external field inside. The ideal closed, neutral conductor encloses no charge, making its interior field zero while an exterior field remains. Mesh leakage and dielectric polarization are omitted."
+      },
+      "transfer": {
+        "question": {
+          "zh": "换成外形相同的绝缘罩，屏蔽效果还相同吗？",
+          "en": "Would an insulating enclosure of the same shape shield equally well?"
+        },
+        "explanation": {
+          "zh": "不会仅因外形相同就得到相同效果。绝缘罩不能像金属那样重排自由电荷；本模型的绝缘对照因此不能使内部电场抵消。",
+          "en": "Matching shape is not enough. The insulator cannot redistribute free charge like a metal; in this model it does not cancel the interior field."
+        }
+      }
+    },
+    "r3-electrostatic-smoke": {
+      "sceneSlug": "electrostatic-applications-lab",
+      "question": {
+        "zh": "烟变清了，烟粒去了哪里？",
+        "en": "When smoke clears, where do the particles go?"
+      },
+      "lead": {
+        "zh": "追踪同一批粒子从空气迁移到收集片，再观察停止起电后的变化。",
+        "en": "Follow the same particles from air to a collecting plate, then switch charging off."
+      },
+      "principle": {
+        "zh": "烟粒荷电后受电场力，负烟粒向正收集片漂移。黏滞阻力限制漂移速度，收集后的粒子保留在片上；空气变清来自位置转移。模型不把代表粒子的数量当作真实除尘效率。",
+        "en": "Charged particles drift under electric force, with negative particles moving toward the positive plate. Viscous drag limits their drift, and captured particles remain on the plate. Clearing reflects relocation; representative particle counts are not a real collection-efficiency measurement."
+      },
+      "transfer": {
+        "question": {
+          "zh": "停止起电后，片上的烟粒会立刻回到空气里吗？",
+          "en": "Do captured particles immediately return to the air when charging stops?"
+        },
+        "explanation": {
+          "zh": "本模型中不会。已收集粒子仍留在片上，但新进入的粒子不再经历原来的荷电与电迁移，因此需要分别跟踪新粒子与已收集粒子。",
+          "en": "Not in this model. Captured particles remain, while new arrivals no longer undergo the previous charging and electric drift. Their different histories must be tracked separately."
+        }
       }
     }
   }

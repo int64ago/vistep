@@ -1,25 +1,45 @@
 ---
-import { donorFusion, enucleation } from '../../models/bio-animal-cell-engineering';
-const f = donorFusion(0.33),
-  e = enucleation(0, 400);
+import { cultureComparison } from '../../models/bio-animal-cell-engineering';
+const compared = cultureComparison(8);
+const samples = [
+  { x: 28, y: 77, state: compared[0] },
+  { x: 234, y: 19, state: compared[2] },
+  { x: 234, y: 132, state: compared[2] },
+];
 ---
 
 <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <rect width="400" height="230" fill="#f1e8ec"></rect>
-  <g transform="translate(187 113) scale(1.05)">
-    <circle r="85" fill="none" stroke="#ddcbbd" stroke-width="7"></circle>
-    <path d={f.path} fill="#eadcbe" stroke="#c8b492" stroke-width="2"></path>
-    {
-      e.mitochondria.map((a) => (
-        <ellipse cx={a.x - e.cx} cy={a.y - e.cy} rx="3.5" ry="2" fill="#b59e7d" />
-      ))
-    }
-    <circle cx={f.nucleus.x} cy={f.nucleus.y} r="5" fill="#9581a4"></circle>
-  </g>
+  <rect width="400" height="230" fill="#f3ebef"></rect>
   <path
-    d="M311 49v18m0-18-10-12m10 12 10-12M82 173v18m0-18-10-12m10 12 10-12"
-    stroke="#b39db9"
-    stroke-width="4"
-    fill="none"
-    stroke-linecap="round"></path>
+    d="M166 115h25m0 0 26-54m-26 54 26 54"
+    stroke="#bca7b8"
+    stroke-width="3"
+    stroke-linecap="round"
+    fill="none"></path>
+  {
+    samples.map(({ x, y, state }) => (
+      <g transform={`translate(${x} ${y})`}>
+        <rect width="128" height="78" rx="19" fill="#f9f4f6" stroke="#c5b1c0" stroke-width="2" />
+        <path d="M5 61q59 18 118 0" stroke="#c5b1c0" stroke-width="2" fill="none" />
+        {Array.from({ length: 8 }, (_, i) => (
+          <circle
+            cx={14 + i * 14}
+            cy="13"
+            r="3"
+            fill="#9eaf83"
+            opacity={Math.min(1, Math.max(0, state.resources / 1.5 - i))}
+          />
+        ))}
+        {Array.from({ length: 32 }, (_, i) => (
+          <g
+            opacity={Math.min(1, Math.max(0, state.n - i))}
+            transform={`translate(${16 + (i % 8) * 14} ${29 + Math.floor(i / 8) * 10})`}
+          >
+            <ellipse rx="8" ry="4.5" fill="#cbb8cd" stroke="#b4a0b8" />
+            <ellipse rx="2.5" ry="2" fill="#9986a3" />
+          </g>
+        ))}
+      </g>
+    ))
+  }
 </svg>

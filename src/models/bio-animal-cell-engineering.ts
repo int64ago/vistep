@@ -1,17 +1,6 @@
 import { fusionOutline } from './bio-plant-cell-engineering';
 export const animalClamp = (x: number, a = 0, b = 1) =>
   Math.min(b, Math.max(a, Number.isFinite(x) ? x : a));
-export function animalGrowth(t: number, adherent = true, contact = true) {
-  const time = animalClamp(t, 0, 24),
-    k = adherent && contact ? 32 : 72,
-    n = 4 * Math.exp(0.35 * time);
-  return {
-    n: k / (1 + (k / 4 - 1) * Math.exp(-0.35 * time)),
-    capacity: k,
-    unrestricted: n,
-    adherent,
-  };
-}
 export function bicarbonatePH(co2Percent = 5, bicarbonate = 24) {
   return 6.1 + Math.log10(bicarbonate / ((0.03 * 760 * animalClamp(co2Percent, 0.1, 20)) / 100));
 }
@@ -196,3 +185,164 @@ export const cloneProvenance = {
   mitochondrial: 'mostly-oocyte-donor',
   gestation: 'recipient',
 } as const;
+
+/** A teaching resource budget, not a fitted cell-line growth law or culture recipe. */
+export interface CultureInputs {
+  initial?: number;
+  resources?: number;
+  surface?: number;
+  adherent?: boolean;
+  contact?: boolean;
+  volume?: number;
+}
+export function cultureFactors(
+  n: number,
+  resources: number,
+  surface = 32,
+  contact = true,
+  volume = 1,
+) {
+  const population = animalClamp(n, 0, 128),
+    resource = animalClamp(resources, 0, 128),
+    capacity = animalClamp(surface, 1, 128),
+    space = contact ? animalClamp(1 - population / capacity) : 1,
+    nutrient = resource / (resource + 8 * animalClamp(volume, 0.05, 10));
+  return { space, nutrient, rate: 0.35 * population * space * nutrient };
+}
+export function cultureGrowth(time: number, inputs: CultureInputs = {}) {
+  const initial = animalClamp(inputs.initial ?? 4, 0, 64),
+    initialResources = animalClamp(inputs.resources ?? 40, 0, 128),
+    surface = animalClamp(inputs.surface ?? 32, 1, 128),
+    contact = (inputs.adherent ?? true) && (inputs.contact ?? true),
+    volume = animalClamp(inputs.volume ?? 1, 0.05, 10),
+    budget = initial + initialResources,
+    t = animalClamp(time, 0, 24),
+    steps = Math.max(1, Math.ceil(t / 0.025)),
+    dt = t / steps;
+  let n = initial;
+  const rate = (v: number) => cultureFactors(v, budget - v, surface, contact, volume).rate;
+  for (let i = 0; i < steps; i++) {
+    const a = rate(n),
+      b = rate(n + (dt * a) / 2),
+      c = rate(n + (dt * b) / 2),
+      d = rate(n + dt * c);
+    n = Math.min(budget, n + (dt * (a + 2 * b + 2 * c + d)) / 6);
+  }
+  const resources = budget - n;
+  return {
+    n,
+    resources,
+    initial,
+    initialResources,
+    surface,
+    budget,
+    ...cultureFactors(n, resources, surface, contact, volume),
+  };
+}
+export const cultureInterventions = ['unchanged', 'medium', 'split'] as const;
+export type CultureIntervention = (typeof cultureInterventions)[number];
+export function cultureComparison(time: number) {
+  return cultureInterventions.map((kind) => {
+    const vessels = kind === 'split' ? 2 : 1,
+      result = cultureGrowth(time, {
+        initial: 28 / vessels,
+        resources: (kind === 'unchanged' ? 4 : 24) / vessels,
+        volume: 1 / vessels,
+      });
+    return {
+      kind,
+      vessels,
+      totalVolume: 1,
+      totalSurface: 32 * vessels,
+      ...result,
+      total: result.n * vessels,
+      totalRate: result.rate * vessels,
+    };
+  });
+}
+export interface AnimalCellSnapshot {
+  chapter: number;
+  progress: number;
+  adherent: boolean;
+  contact: boolean;
+  co2: number;
+  hat: boolean;
+  lambda: number;
+  initial: number;
+  resources: number;
+  prediction: CultureIntervention | null;
+  journal: string;
+}
+export function animalAuthoredSnapshot(chapter: number, progress: number): AnimalCellSnapshot {
+  const p = animalClamp(progress);
+  return {
+    chapter: Math.trunc(animalClamp(chapter, 0, 11)),
+    progress: p,
+    adherent: true,
+    contact: true,
+    co2: 5 + 5 * animalClamp((p - 0.2) / 0.65),
+    hat: true,
+    lambda: 0.3,
+    initial: 4,
+    resources: 40,
+    prediction: null,
+    journal: '',
+  };
+}
+/** Measured speech landmarks, including its 0.45 s lead-in. The resulting process
+ * coordinate is stored in Explore, so switching modes does not retime the model. */
+export function animalMeasuredSnapshot(
+  chapter: number,
+  progress: number,
+  chapterTime: number,
+  en: boolean,
+): AnimalCellSnapshot {
+  const state = animalAuthoredSnapshot(chapter, progress);
+  if (state.chapter !== 1 && state.chapter !== 2) return state;
+  const landmarks: Array<[number, number]> =
+    state.chapter === 1
+      ? [
+          [0, 0],
+          [en ? 2.23 : 2.39, 0],
+          [en ? 7.53 : 7.41, 1],
+        ]
+      : en
+        ? [
+            [0, 0],
+            [0.45, 0],
+            [6.65, 0.419],
+            [7.13, 0.42],
+            [8.13, 0.55],
+            [22.77, 0.67],
+            [33.51, 1],
+          ]
+        : [
+            [0, 0],
+            [0.45, 0],
+            [7.65, 0.419],
+            [8.11, 0.42],
+            [9.11, 0.55],
+            [20.69, 0.67],
+            [29.29, 1],
+          ];
+  const time = Number.isFinite(chapterTime) ? Math.max(0, chapterTime) : 0;
+  let mapped = 1;
+  for (let i = 1; i < landmarks.length; i++) {
+    const [start, a] = landmarks[i - 1],
+      [end, b] = landmarks[i];
+    if (time <= end) {
+      mapped = a + (b - a) * animalClamp((time - start) / (end - start));
+      break;
+    }
+  }
+  return { ...state, progress: mapped };
+}
+export function animalCultureDirector(progress: number) {
+  const p = animalClamp(progress);
+  return {
+    transfer: animalClamp(p / 0.42),
+    compare: p >= 0.42,
+    prediction: p >= 0.42 && p < 0.67,
+    growthTime: 8 * animalClamp((p - 0.67) / 0.33),
+  };
+}

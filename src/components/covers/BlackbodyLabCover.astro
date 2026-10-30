@@ -1,9 +1,10 @@
 ---
-import { ModernLabArtwork } from '../experiments/ModernLab';
+import { BlackbodyArtwork } from '../experiments/BlackbodyLab';
+import { blackbodyShot } from '../../models/blackbody-lab';
 import StaticArtworkCover from './StaticArtworkCover.astro';
 ---
 
 <StaticArtworkCover
-  artwork={ModernLabArtwork}
-  options={{ kind: 'blackbody', value: 0.7, progress: 0.7, cover: true }}
+  artwork={BlackbodyArtwork}
+  options={{ state: blackbodyShot(3, 0.8), compact: true, cover: true }}
 />

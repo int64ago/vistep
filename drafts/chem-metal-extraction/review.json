@@ -1,38 +1,58 @@
 {
   "slug": "chem-metal-extraction",
-  "sourceCommit": "2b2deb0603dd6ad60775bc56e4744c44526b9786",
-  "reviewedAt": "2026-10-18T16:52:27.066424",
+  "batch": "B24",
+  "sourceCommit": "56d0a37808effabce84a49af04a9511a2e308f96",
+  "reviewedAt": "2026-10-29T04:45:38.945556+00:00",
+  "status": "owner-source-frozen; root frozen-build acceptance pending",
   "files": {
-    "src/models/chem-metal-extraction.ts": "896ca7f0065916ec4fe9c6ae3b104876841849443c004429b143264a12e6873c",
-    "src/models/chem-metal-extraction.test.ts": "8f5186213b598f5f91e03d98cec69723339ab93fdbe352e375b2414d8fd7c68b",
-    "src/components/experiments/ChemMetalExtraction.tsx": "0e723086051d6a38ef2a0abdb6bb2ac1dea98ebe8e35db3ec7f607f4ecffbae4",
-    "src/components/covers/ChemMetalExtractionCover.astro": "7a19c778f5aa542db20e22b4ae063cf55ffc8eb5f3b3a10969066db5c98b65f6",
-    "src/styles/chem-metal-extraction.css": "e7b800f85cbed5592b5562b61230b8fda46ce2ea079f8b18df33ad754ba401af",
-    "src/content/chem-metal-extraction.mdx": "fa09c0e93484e12857aa7e24563d8a5c7618fc4881b13febbbf330cc31a0efe6",
-    "src/content/en/chem-metal-extraction.mdx": "51ba158250afea0eff44b51047776fb4d993ce7c763cec7083654f7ddd0ddca7",
-    "src/data/scene-packets/chem-metal-extraction.json": "8de111d030aaf5872bece5670bdf8b0d98334bfb6a098391d55632965e9d86ae"
+    "src/models/chem-metal-extraction.ts": "5fdf3a5a1645afa4085746389959878b9f37d4cca3ee4664ec940164289f7a8f",
+    "src/models/chem-metal-extraction.test.ts": "a4a4d04ae968428380753a5174ab6b77c82c8e8d7a356f90c1b7d08b9075ebe3",
+    "src/components/experiments/ChemMetalExtraction.tsx": "a4ee5525e2d91b5fd842f6127c9059ca0be818615b5b7b1a4110a2dac11d4c72",
+    "src/components/experiments/ChemMetalExtraction.test.tsx": "547fb7b00e9f4a3d5824bc25306b320749bdc6ba83bc522801c6bb3f7afb750f",
+    "src/styles/chem-metal-extraction.css": "3bdb8a7db7f058bfba149a06061205a6e48054b6ff71b6b8d37c7cf833d6d3f4",
+    "src/content/chem-metal-extraction.mdx": "71ea5d1092985ad53d1aaa03b67cb82689935193c6d5603ca510cfaa54ed3a5f",
+    "src/content/en/chem-metal-extraction.mdx": "73c6a10e51f1c557d4d291b14d1fc9203475d2af9a5bd0cabc1512b32027ddb8",
+    "src/components/covers/ChemMetalExtractionCover.astro": "30b1fc6e4ab5dd2c9cff327232909800683d03c1d3cc7fdc9cd31254371c3ea5",
+    "drafts/chem-metal-extraction/brief.md": "7b480db7cbf014275b944c5a8432152ca55d079c1f50043f762c193cd5b85edc"
   },
+  "scientificEvidence": "artifacts/teaching-principles/batch-24/chemistry/scientific-evidence.json",
   "modelTests": {
     "status": "passed",
-    "count": 6
+    "count": 16,
+    "files": 2,
+    "scope": "Independent equilibrium-constant benchmark, gas-ratio counterexample, source-temperature boundaries, atom/electron balance, measured director turns, initial and edited Explore state restoration, reverse prediction."
   },
-  "ownedTypeScriptDiagnostics": 0,
-  "packetValidation": "passed",
   "scopedPrettier": "passed",
-  "viewport": "320x844 emulated Chromium; reduced motion; muted paused seeks",
-  "visual": {
-    "sweep": "All7 English/Chinese chapter stills captured; actual six reaction shots viewed. Corrected intermediate atom label collisions with display-only repulsion, increased label contrast and added endpoint dwell; all6changed English chapters recaptured. CO2 display groups made linear and changed iron/CO final shot recaptured and actually viewed. ENmax788.22/ZH723.02 at top90.78. Na/Mg surface product andAl bottomproduct differ; Na/Mg/Al stoichiometric ion markers differ, toggling melt changes appearance and model gate. Author self-review only.",
-    "evidenceDirectories": [
-      "artifacts/chemistry-inventory/review-metal",
-      "artifacts/chemistry-inventory/review-metal-zh",
-      "artifacts/chemistry-inventory/review-metal-final",
-      "artifacts/chemistry-inventory/review-metal-linear"
-    ]
+  "sharedIntegration": "Root applied metadata/profile/original seven-chapter window and measured242s narration. Owner did not modify shared files.",
+  "speech": {
+    "totalSegments": 14,
+    "changedSegments": 8,
+    "retainedSegments": 6,
+    "changedCueIndices": [0, 2, 3, 6],
+    "retainedCueIndices": [1, 4, 5],
+    "rootTimedSpeechDirectory": "artifacts/teaching-principles/batch-24/timed-speech",
+    "criticalIssue": "Turbo Chinese c2 sign/unit transcription was ambiguous; original retained. Independent full large-v3 exact-PCM decoder recovered positive775kJ/negative25kJ.",
+    "secondDecoder": "artifacts/teaching-principles/batch-24-terms-second-asr/chem-metal-extraction-zh-2.json",
+    "subjectiveListening": false
   },
-  "notRun": [
-    "continuous full viewing",
-    "native listening (root synthesizes)",
-    "physical phone",
-    "root independent desktop/exploration/curriculum-route review"
+  "visual": {
+    "viewport": "Chromium desktop1440x1000 and narrow320x568; reduced motion, muted paused seeks",
+    "decisiveReport": "artifacts/teaching-principles/batch-24/chemistry/decisive-03/report.json",
+    "decisiveCasesPassed": 36,
+    "nativeReport": "artifacts/teaching-principles/batch-24/chemistry/controls-dev-01/report.json",
+    "nativeChecksPassed": 456,
+    "rangeOnlyFollowup": "artifacts/teaching-principles/batch-24/chemistry/control-layout-03/report.json",
+    "rangeOnlyFollowupPassed": 4,
+    "measuredCriticalReport": "artifacts/teaching-principles/batch-24/chemistry/critical-dev-01/report.json",
+    "measuredCriticalCasesPassed": 44,
+    "actualViewManifest": "artifacts/teaching-principles/batch-24/chemistry/actual-view-manifest.json",
+    "actualImagesViewed": 17,
+    "historicalFindings": "Original whole-player overflow resolved before decisive03. Native-control actual review found flex rule squeezing ranges; fixed scoped CSS then4 targeted cases. A rejected non-step timeline seek in layout02 was a harness input error, preserved as such."
+  },
+  "openAuthorFindings": [],
+  "pending": [
+    "root frozen production-route matrix and complete playback checks",
+    "subjective audio listening not claimed",
+    "physical-device performance not claimed"
   ]
 }

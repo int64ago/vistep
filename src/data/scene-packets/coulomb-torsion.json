@@ -55,20 +55,28 @@
     "库仑扭秤": "Coulomb’s Torsion Balance",
     "怎样把微小的静电力变成可比较的扭角？": "How can a tiny electric force become a comparable twist?",
     "从悬球偏转到扭秤回零，控制球心距离与电荷，检验平方反比关系。": "From suspended-sphere deflection to torsion-balance nulling, control separation and charge to test the inverse-square relationship.",
-    "静电力 · 控制变量": "Electric force · Controlled variables"
+    "静电力 · 控制变量": "Electric force · Controlled variables",
+    "先看到排斥": "First observe repulsion",
+    "球偏转时，球心距离也在改变。": "Deflection changes the final separation.",
+    "先回零，再比较": "Null before comparing",
+    "扭转悬丝，让 A 回到参考线。": "Twist the suspension to return A to null.",
+    "距离减半，力怎样变？": "What happens when separation halves?",
+    "电荷不变，距离减半，力增至四倍。": "Fixed charges: half the distance, four times F.",
+    "相同小球分走一半电荷": "Share charge with an identical sphere",
+    "相同球分电后，A 的电荷与扭角减半。": "Equal sharing halves charge and nulling twist."
   },
   "narration": {
-    "duration": 100,
+    "duration": 101.5,
     "cues": [
       {
         "id": "hanging-sphere",
         "title": "先看到排斥",
         "titleEn": "First observe repulsion",
-        "caption": "距离变近，悬球偏转；最终距离也随之改变。",
-        "captionEn": "As the source moves nearer, the suspended sphere deflects and changes the final separation.",
+        "caption": "球偏转时，球心距离也在改变。",
+        "captionEn": "Deflection changes the final separation.",
         "seconds": 24,
         "chapterAt": 0,
-        "at": 0.4,
+        "at": 0.45,
         "zh": "先看丝线下的小球。另一个同号带电球慢慢移近，小球受到排斥，偏角增大。可是它也向外移动了，所以最终的球心距离并不是支架间的距离。这能帮助我们发现力与距离有关，要精确比较，还需要更严格地控制位置。",
         "en": "Watch the suspended sphere. As another like-charged sphere moves nearer, repulsion increases its deflection. But the sphere also moves outward, so its final separation is not simply the spacing between supports. This reveals a distance dependence; a precise comparison needs tighter position control."
       },
@@ -76,11 +84,11 @@
         "id": "null-balance",
         "title": "先回零，再比较",
         "titleEn": "Null before comparing",
-        "caption": "转动悬丝上端，使 A 球回到原位。",
-        "captionEn": "Rotate the upper suspension until A returns to its reference position.",
+        "caption": "扭转悬丝，让 A 回到参考线。",
+        "captionEn": "Twist the suspension to return A to null.",
         "seconds": 28,
         "chapterAt": 24,
-        "at": 24.4,
+        "at": 24.45,
         "zh": "现在换成扭秤。A 球受到 C 球排斥，绝缘摆臂转开。我们缓慢旋转悬丝上端，使 A 回到虚线标出的原位。此时距离与力臂重新确定，悬丝回复力矩平衡静电力矩。上端扭角越大，所平衡的静电力也越大。",
         "en": "Now use a torsion balance. C repels A and turns the insulating arm. Slowly rotate the upper end of the suspension until A returns to the dashed reference line. Separation and lever arm are now controlled. The suspension torque balances electric torque, and a larger upper twist represents a larger force."
       },
@@ -88,11 +96,11 @@
         "id": "distance-law",
         "title": "距离减半，力怎样变？",
         "titleEn": "What happens when separation halves?",
-        "caption": "保持电荷和回零状态，距离减半，力变为四倍。",
-        "captionEn": "Keep charges fixed and maintain null: halving separation gives four times the force.",
+        "caption": "电荷不变，距离减半，力增至四倍。",
+        "captionEn": "Fixed charges: half the distance, four times F.",
         "seconds": 24,
         "chapterAt": 52,
-        "at": 52.4,
+        "at": 52.45,
         "zh": "保持两球电荷不变，也保持 A 在原位。把 C 移近，让球心距离从十二厘米减到六厘米。看力和扭角的变化：它们都增大到原来的四倍。这里比较的是距离的平方反比关系，而不是简单地距离减半、力就加倍。",
         "en": "Keep both charges fixed and A at its reference position. Bring C closer, reducing the centre separation from twelve to six centimetres. Force and twist both grow to four times their original values. The comparison is inverse-square: halving separation does not merely double the force."
       },
@@ -100,11 +108,11 @@
         "id": "charge-sharing",
         "title": "相同小球分走一半电荷",
         "titleEn": "Share charge with an identical sphere",
-        "caption": "中性球接触后分开，A 的电荷与回零扭角都减半。",
-        "captionEn": "After contact and separation, A retains half its charge and needs half the nulling twist.",
+        "caption": "相同球分电后，A 的电荷与扭角减半。",
+        "captionEn": "Equal sharing halves charge and nulling twist.",
         "seconds": 24,
         "chapterAt": 76,
-        "at": 76.4,
+        "at": 76.45,
         "zh": "距离不变，这次让同样大小的中性球 D 接触 A，再把 D 移开。在相同孤立导体的近似下，电荷平分，A 留下一半。重新回零时，需要的扭角也减半。接触分电的结论依赖小球相同且外界影响足够小，真实装置还要处理漏电等误差。",
         "en": "Keep separation fixed. Touch A with an identical neutral sphere D, then move D away. In the identical isolated-conductor approximation, charge divides equally and A retains half. Returning to null now needs half the twist. Equal sharing depends on identical spheres and weak external influence; real apparatus also faces leakage and other errors."
       }
@@ -123,6 +131,58 @@
       "label": {
         "zh": "库仑扭秤实验",
         "en": "Coulomb torsion-balance experiment"
+      }
+    }
+  },
+  "teachingProfiles": {
+    "r3-charge-force-comparison": {
+      "sceneSlug": "coulomb-torsion",
+      "question": {
+        "zh": "悬球偏得越远，就能直接比较电力吗？",
+        "en": "Does greater deflection directly measure electric force?"
+      },
+      "lead": {
+        "zh": "靠近一个同号带电球，同时观察悬线偏角与真实球心距离。",
+        "en": "Bring a like-charged sphere closer and follow both suspension angle and actual centre separation."
+      },
+      "principle": {
+        "zh": "悬球偏转由静电力、重力和张力共同决定。偏转又改变球心距离，所以支架距离不能直接代替带电球的最终间距。定量比较必须控制几何条件。",
+        "en": "Deflection reflects electric force, gravity and tension. It also changes centre separation, so support spacing cannot substitute for the final distance between charged spheres. Quantitative comparisons require controlled geometry."
+      },
+      "transfer": {
+        "question": {
+          "zh": "把支架间距减半，静电力一定变成四倍吗？",
+          "en": "Does halving support spacing necessarily quadruple electric force?"
+        },
+        "explanation": {
+          "zh": "不一定。小球会移动，最终球心距离未必减半。平方反比比较要求电荷保持不变，并使用带电球之间的实际距离。",
+          "en": "Not necessarily. The suspended sphere moves, so the final centre separation may not halve. An inverse-square comparison requires fixed charges and the actual separation."
+        }
+      }
+    },
+    "r3-coulomb-balance": {
+      "sceneSlug": "coulomb-torsion",
+      "question": {
+        "zh": "看不见的电力，怎样变成可比较的角度？",
+        "en": "How does electric force become a measurable twist?"
+      },
+      "lead": {
+        "zh": "先把小球回到同一参考线，再分别改变距离与电荷。",
+        "en": "Return the sphere to one reference line, then vary separation and charge separately."
+      },
+      "principle": {
+        "zh": "回零使位置与力臂得到控制，悬丝回复力矩平衡静电力矩。固定电荷时距离减半，力与所需扭角增至四倍；相同导体分走一半电荷时，固定距离下的力与扭角减半。",
+        "en": "Nulling controls position and lever arm, allowing suspension torque to balance electric torque. At fixed charge, halving separation quadruples force and required twist. Equal sharing with an identical conductor halves charge and, at fixed separation, halves force and twist."
+      },
+      "transfer": {
+        "question": {
+          "zh": "接触 A 的中性小球如果大小不同，还一定分走一半电荷吗？",
+          "en": "Would a differently sized neutral sphere necessarily take half of A’s charge?"
+        },
+        "explanation": {
+          "zh": "不会。平分结论依赖相同导体以及外界影响足够小。不同尺寸会改变等势时的电荷分配，不能直接套用一半的结论。",
+          "en": "No. Equal sharing relies on identical conductors and sufficiently weak external influence. Different sizes change the equal-potential charge distribution."
+        }
       }
     }
   }
